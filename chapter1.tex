@@ -1,0 +1,43 @@
+\section{Introduction}
+\label{chap:Introduction}
+
+
+Many life science experiments focus on comparisons between two phenotypes such as disease vs. control, treated vs. not treated, drug A vs. drug B, etc. Microarrays and more recently, RNASeq assays, allow researchers to measure all genes and subsequently  yield a list of differentially expressed (DE) genes. The challenge is to translate these measurements and lists of DE genes into a better understanding of the underlying biological phenomena, and in particular an understanding of its mechanisms. %Understanding the causes of the measured gene expression changes  is a very important step in understanding the phenotype. %Although downstream 
+Analysis approaches such as pathway analysis~\cite{DraghiciOntologicalToolsReview:2005,Khatri:2012, mitrea2013methods, tarca2013comparison, nguyen2018network, ihnatova2018critical, nguyen2019identifying}, network analysis~\cite{mitra2013integrative} and gene ontology (GO) analysis~\cite{DraghiciOntologicalToolsReview:2005,Rhee:2008}, have been very successful in the past two decades in helping to translate such lists of DE genes into meaningful insights of the underlying biological phenomena. A particular sub-problem in this area focuses on the identification of upstream regulators that may explain the observed changes. In principle, such upstream regulators could be of different types including: genes (e.g. gene encoding transcription factors), miRNA, drugs, chemicals, or toxicants. This type of analysis is generally referred to as ``causal analysis''~\cite{schadt:2005, chindelevitch2012causal, kramer2013causal, felciano2013predictive}. 
+
+
+In some disease phenotypes, the presence of a chemical substance  is responsible for the changes in  the gene expression profiles and  therefore, for creating the phenotypes. 
+In other situations,  a phenotype and its associated  gene expression changes  can be caused by the lack of a necessary chemical  that plays an important metabolic role, e.g. iodine deficiency. 
+Identifying the chemical, drug, or toxicant (CDT) that perturbs the patients' gene expression level is a crucial step to pinpoint the cause and therefore help finding a suitable treatment for the patients.
+
+
+Because understanding the effects of various CDTs is so important, the associations between chemicals and gene products have been studied intensely in the past decade and are available in several curated public chemical knowledge bases, such as the Comparative Toxicogenomics Database ~\cite{mattingly2006comparative}, KEGG~\cite{Kanehisa:2000}, and Drugbank~\cite{law2014drugbank}. 
+
+Inferring the causal factors of the high-throughput gene expression profiles has been intensely researched and has become a helpful tool in: (i) elucidating and exploiting the mechanism of upstream regulators including upstream genes, proteins, or chemicals, and (ii) finding (alternative) treatments for studied conditions (e.g. drug repurposing). 
+For example, Schadt \emph{et al.} successfully identified three new genes in susceptibility to obesity by using this approach~\cite{schadt:2005}.
+Pollard \emph{et al.} proposed a computational model to define the molecular causes of Type 2 Diabetes Mellitus~\cite{pollard2005computational}.  A Pfizer research group created networks of molecular causal interactions by integrating available biological knowledge, mainly from two commercial vendors: Selventa Inc. (\href{http://www.selventa.com}{http://www.selventa.com}) and Ingenuity Inc. (\href{http://www.ingenuity.com}{http://www.ingenuity.com})~\cite{chindelevitch2012causal}.
+
+In the next part of the study, we propose another similar approach to identify upstream regulators as an attempt to search for an alternative treatments for COVID-19, that has caused around 800 millions cases and around 7 millions death (as of December 2023). 
+
+Most current efforts related to COVID-19 span a number of areas as follows: i) antivirals, ii) vaccine development, iii) diagnostic tests, and iv) patient-supporting interventions. 
+Without reducing the significance and impact of any of the areas above, there is an important aspect that has not been elucidated: the identification and treatment of patients developing critical conditions and risk of mortality.  Recently, Mehta \textit{et al.} stated that ``Accumulating evidence suggests that a subgroup of patients with severe COVID-19 might have a cytokine storm syndrome'' that correlates with high mortality~\cite{mehta2020covid}.
+Therefore, identification and appropriate management of the patients developing cytokine storm syndrome is critical for successful outcomes. Treatment of hyper-inflammation in these patients using existing, approved therapies with proven safety profiles could address the immediate need to reduce the rising mortality. 
+
+COVID-19 has several distinct clinical phases:  an infection phase, a viral replication phase, an inflammatory phase, and in some patients, a hyper-inflammatory phase or cytokine storm~\cite{siddiqi2020covid,Ayres2020:survivingCOVID19}. After the initial viral phase of the illness, some patients will develop a cytokine storm which has being associated with the acute respiratory distress syndrome (ARDS) and mortality.  Therefore, in order to decrease the risk of mortality is necessary to distinguish the phase where the viral pathogenicity is dominant versus when the host inflammatory response overtakes the pathology~\cite{siddiqi2020covid,Ayres2020:survivingCOVID19}. A potential approach is to develop interventions that could inhibit/prevent the hyper-inflammatory process leading to the cytokine storm.
+A strong argument in favor of also targeting the host response is offered by the data on influenza. Even though influenza patients receive optimal anti-viral therapy, approximately 25\% of the critically ill influenza patients still die~\cite{Ayres2020:survivingCOVID19,louie2012treatment}. This suggests that anti-viral therapy alone will not be sufficient for COVID-19 either, and the host response to the virus still needs to be taken into consideration.
+
+However, approaches aiming at modulating the immune response face some concerns. In particular, it may seem counter-intuitive to try to diminish the immune response in a patient whose immune system is fighting against a virus. Modulating the immune system is likely unnecessary and counter-productive for patients whose immune system is doing a good job at resolving the infection, while it could potentially be life-saving for those whose inflammatory response has become dysregulated. If a patient has developed severe respiratory symptoms and is hypoxic, the host response that lead to ARDS, sepsis, and organ failure has already been initiated~\cite{mehta2020covid}. At this point, the focus should shift to supporting the patient's systems and preventing collapse triggered by hyper-inflammation~\cite{Ayres2020:survivingCOVID19}. 
+
+In order to identify the best potential therapeutic approach, we performed a transcriptome analysis of tissues and cell samples infected with SARS-CoV-2 in order to understand the main mediators of the inflammatory process. Once characterized the inflammatory pathways we identified drugs that would mitigate or alleviate some of the devastating over-reactions of the host's immune system (e.g. cytokine storm). Finally, we evaluated the efficacy of the identified drug in a small cohort of COVID-19 patients.
+
+My thesis is an attempt to solve these problems and will be organized as follows:
+
+Chapter 2 proposes a novel approach to identify the upstream CDT regulator. 
+We describe the CDT-drug association knowledge base and data sets used in the study as well as the hypotheses tested. Subsequently, we describe the method to compute the statistical significance. Next, we define the criteria to assess the performance and compare with other benchmarking methods. We discuss the possible limitations of the method at the end of the chapter.
+
+In Chapter 3, we describe our approach to identify potential alternative drugs for treatment of severe  COVID-19 cases. Subsequently, we introduce the data sets and experiments used in this study. We present some preliminary results in this section.
+
+Finally, chapter 4 describes the future development plans that includes the validation and assessment for the approaches in chapter 2 and chapter 3. 
+
+
+
