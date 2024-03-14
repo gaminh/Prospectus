@@ -210,15 +210,15 @@
 \pagenumbering{roman} \lfoot{}\cfoot{\thepage}\rfoot{}
 \setcounter{page}{2}
 
-% Compile dedication page
-\phantomsection
-\input{dedication}
-\newpage
-
-% Compile acknowledgements page
-\phantomsection
-\input{acknowledgements}
-\newpage
+%% Compile dedication page
+%\phantomsection
+%\input{dedication}
+%\newpage
+%
+%% Compile acknowledgements page
+%\phantomsection
+%\input{acknowledgements}
+%\newpage
 
 % Enter single spacing environment for toc, lot, and lof (see below)
 \begin{singlespace}
@@ -262,29 +262,29 @@
 \input{chapter2}
 \clearpage
 
-% Compile Chapter 3
-\input{chapter3}
-\clearpage
+%% Compile Chapter 3
+%\input{chapter3}
+%\clearpage
 
-\input{chapter4}
-\clearpage
+%\input{chapter4}
+%\clearpage
 
 % Compile Appendix A
 \phantomsection
 \input{appendixA}
 \clearpage
 
-% Compile Appendix B
-\phantomsection
-\input{appendixB}
-\clearpage
-
-% ...
-
-% Compile Appendix Z
-\phantomsection
-\input{appendixZ}
-\clearpage
+%% Compile Appendix B
+%\phantomsection
+%\input{appendixB}
+%\clearpage
+%
+%% ...
+%
+%% Compile Appendix Z
+%\phantomsection
+%\input{appendixZ}
+%\clearpage
 
 % Compile bibliography
 \phantomsection
@@ -292,7 +292,8 @@
 \section*{REFERENCES}
 \bibliographystyle{abbrv}
 \addcontentsline{toc}{section}{References}
-\bibliography{/Users/minhnguyen/master/master} 
+%\bibliography{/Users/minhnguyen/master/master} 
+\bibliography{/Users/Sorin/Documents/bibliography/master}    %Sorin
 \clearpage
 
 % Compile abstract
