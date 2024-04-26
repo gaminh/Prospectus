@@ -1,0 +1,48 @@
+\section{Conclusion}
+
+
+In this prospectus, we propose a causal analysis approach that infers the CDTs responsible for the changes in the gene expression profile, either because their level in the subject's system is higher (hypothesis 1) or lower (hypothesis 2) than normal. 
+%This application is a crucial step to treat conditions related to external CDTs since it helps identifying the correct causal CDTs causing observed list of DE genes. 
+On one hand,  hypothesis 1 helps identifying the cause of conditions related to external CDTs, and therefore is a crucial step for the treatment process. 
+Our proposed method can be applied to time series analysis experiments in which the subjects' gene expression profiles are measured periodically after taking a known medicine. Applying our methods on these profiles would help identify the time point beyond which the effect of the drug ceases to affect the gene expression profiles in a significant way  (e.g. experiments 6-8 in Table \ref{Datasets}).
+On the other hand, hypothesis 2 can be interpreted as a prediction of what is lacking in the system but also as a suggestion for a CDT that could reverse the expression changes induced by a disease phenotype, and therefore, is useful in the drug repurposing study. %Recently, a similar approach was applied to the discovery of a treatment for severe cases of COVID-19~\cite{DraghiciCOVID:2021}. 
+
+
+
+
+For validation process, we would used 14 gene expression data sets with different known causal factors and different species for validating the performance of testing H1, and another two data sets for assessment of the ability of testing the H2. %The significance score would show whether our method is more robust than other classical and commercial approaches included in this study, in term of the rank of true CDT, and the number of false positives.
+
+%There are several reasons that limit the accuracy of the existing tools compared to PURE. First, they do not take into consideration the direction of changes in DE genes, i.e., current methods do not take into consideration if a DE gene is up- or down-regulated. Second, they do not utilize the information about CDT-gene interactions as PURE does. Finally, Fisher's exact test may not yield reliable when the number of ``interesting'' genes (i.e. DE genes) is small, which is often the case in gene expression data sets. Instead of DE genes versus total number of  genes, PURE considers the number of interactions supporting (or not)  the testing hypothesis. Because the ratio of edges supporting H1 out of all edges is much higher than the ratio of DE genes out of all available genes in the data sets, PURE is expected produce a significantly more accurate result in more situations.
+
+\textbf{Limitations}
+
+%\red{Notice that even though Methylprednisolone was proved in a separate clinical trial that it improved the outcome, this finding is arguably not the ground truth because its effectiveness is yet to validate by a big scale clinical study and at the moment it is not the only drug for the COVID-19 treatment. }
+
+The proposed method, if it works, might be useful in many cases but only as a first -- \emph{computational} -- step to identify potential  causal CDTs (by using  H1), or drugs that could be potentially repurposed (by using H2). As any other type of computational, \textit{in silico} results, anything obtained with this approach will require further validation through laboratory experiments, clinical trials or both.
+
+%The proposed approach, as well as all other methods benchmarked in this study, depend significantly on the quality of the curated chemical-gene expression association database.
+%No algorithm would be able to identify the true CDT if no association between this CDT and the DE genes (or any gene) are annotated in the database used.
+%Yet, the annotation of the drug-gene association database is the most challenging problem in the field. 
+%At any given time, these databases are incomplete, probably partially incorrect, and will evolve as the technology advances and more knowledge is gathered. 
+%However, the results shown here, demonstrate the performance of the proposed approach 
+%%will yield better results 
+%compared to the existing approaches when using currently available resources. 
+%The expectation is that an improvement of the quality of the underlying database will improve the results of all methods, rather than favor a particular one. 
+%
+%Moreover, all CDTs are not equally well studied. CDTs that are more popular and/or widely researched would have more associations with targeted genes discovered than the less popular ones.
+%This issue, in turn, could create a potential bias against rare CDTs which would be less likely to be correctly identified.
+%The same problem is observed in the pathway analysis field when the pathway analysis methods, including ORA, KS, Wilcoxon, and GSEA, tend to be biased toward small-size pathways~\cite{nguyen2019identifying}.
+%
+%Another issue with the annotations is that any association can be recorded in the database in two different ways which will also affect the testing hypotheses.
+%For example, let us consider a chemical C that increases  the   expression level of a gene G. This can be captured as either ``C increases G'' or, alternatively as ``C deficiency decreases G''. 
+%In the experiment in which the chemical C is lacking (data set 14 in Table~\ref{Datasets}), instead of testing the hypothesis 2 that tests whether the chemical C's level is lower than normal, one must test the hypothesis 1 with the true CDT being ``chemical C deficiency''.
+
+%We only benchmark the methods' performance on testing the hypothesis 1. Although hypothesis 2 is extremely useful in the drug repurposing application, it is not included for the following reasons: (i) The hypothesis 1 and 2 are only different in the sign of the interaction, and a method performing well when testing the hypothesis 1 is expected to perform well with the hypothesis 2, as well; (ii) classical gene set methods, namely ORA, KS, Wilcoxon, and FGSEA, just determine whether the CDT is the causal factor the observed expression changes, but cannot distinguish between these two hypotheses; and (iii) lacking some CDTs is sometimes noted in the database with ``CDT deficiency" with reversed signs of the interactions. 
+%and (iv) the experiments of chemical deficiency are often complicated, require a lot of clinical trials, take much longer than experiments of hypothesis 1, and they are often not publicly available.
+%, and (v) the four classical approaches do not take the types of the interactions between the CDT and genes into consideration and are not able to distinguish the hypothesis 1 and hypothesis 2.
+
+While benchmarking methods in terms of number of false positives reported, there could be similar CDTs that would have the same effects as the studied CDTs, and therefore, perhaps they should not be counted as false positives. However, in our opinion focusing on the exact chemical that was used to create the phenotype is the most objective and reproducible way for benchmarking the methods.
+
+%Finally, it is important to note that all methods compared here used public annotations from CTD with the exception of IPA which uses Qiagen's proprietary knowledge base. In principle, the fact that IPA's results were less accurate for some of the data sets could be due either to a lower quality underlying knowledge base or to an inferior algorithm. However, this distinction is less important in practical use. A life scientist contemplating the choice of the tools to use in identifying potentially causal CDTs could only consider IPA as a package including both knowledge base and associated algorithm. Therefore, we included the results obtained with IPA, as it is currently available to life scientists. 
+
+Although this topic is not new, public data sets related to this problem are scarce. To our knowledge, most of the published papers in this field include only one or two data sets in their manuscripts. For example, the causal analysis method in IPA only illustrated their method on two data sets in their manuscript. We considered that insufficient and we strived to use many more data sets. We did an exhaustive search but we only found the 16 data sets that we included here. This is still a small number of data sets but it is an order of magnitude more data sets than used in the articles presenting the existing methods in the field.

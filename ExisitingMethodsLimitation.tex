@@ -1,0 +1,60 @@
+\section{Unsolved challenges and/or limitations of existing methods}
+\label{chap:ExisingMethodsLimitation}
+
+Although this area is promising and has been intensely researched in the past decade, the existing approaches in the field are limited in either one of the following ways.
+
+The existing methods depend significantly on the quality of the curated chemical-gene expression association database. 
+No algorithm would be able to identify the true CDT if no association between this CDT and the DE genes (or any gene) are annotated in the database used.
+Yet, the annotation of the drug-gene association database is the most challenging problem in the field. 
+At any given time, these databases are incomplete, probably partially incorrect, and will evolve as the technology advances and more knowledge is gathered. 
+
+Another issue with the annotations is that any association can be recorded in the database in two different ways which will also affect the testing hypotheses.
+For example, let us consider a chemical C that increases  the   expression level of a gene G. This can be captured as either ``C increases G'' or, alternatively as ``C deficiency decreases G'' in the knowledge base. 
+
+Moreover, all CDTs are not equally well studied. CDTs that are more popular and/or widely researched would have more associations with targeted genes discovered than the less popular ones.
+This issue, in turn, could create a potential bias against less popular CDTs which would be less likely to be correctly identified.
+The same problem is observed in the pathway analysis field when the pathway analysis methods, including ORA, KS, Wilcoxon, and GSEA, tend to be biased toward small-size pathways~\cite{nguyen2019identifying}.
+
+In some cases, the knowledge bases are commercialized and are not open to public for data modification, e.g. IPA is a commercial product and analyzes its own knowledge base. In essence, it prevents researchers to update the data base with their new discover in drug-gene associations, which could be a new associations or a correction of a previous findings. 
+Other popular methods utilize the data bases from previous projects such as cMAP and LINCS. Although they are open for public, the results might not be regularly updated. Also, researchers are limited from integrating their own input and/or modifying these knowledge bases. 
+
+%Some causal approaches focus  on identifying upstream genes/proteins instead of external causes such as CDTs. 
+Some classical methods do not take into consideration the direction of changes in DE genes, i.e., whether a DE gene is up- or down-regulated, as well as the association between the CDT and the downstream genes, i.e. inhibition or activation.  
+Moreover, some of them only focus on some specific conditions. Hence, the methods are work well with the studied condition but might not work for other conditions.
+Some causal approaches focus  on identifying upstream genes/proteins instead of external causes such as CDTs. 
+
+Some methods, such as Fisher's exact test, may not yield reliable when the number of ``interesting'' genes (i.e. DE genes) is small, which is often the case in gene expression data sets. 
+
+%Among existing causal analysis methods, IPA is a commercial tool and is arguably considered the state-of-the-art. 
+%Although IPA derives these two scores for each CDT, namely ``overlapped p value'' and ``z-score'', the result is solely determined by the z-score: the regulator is determined as ``activated''  or ``inhibited'' if its z-score $\geq 2$ or $\leq -2$, respectively~\cite{kramer2013causal}. In other words, the statistic calculated from the data will determine the outcome, instead of formulating the hypothesis testing beforehand.
+%Another drawback of IPA is that it does not derive the significant score, e.g. z-score, for all CDT in the knowledge base.
+To our knowledge, none of the existing methods can be applied in both drug repositioning and causal analysis. 
+
+
+%Instead of DE genes versus total number of  genes, PURE considers the number of interactions supporting (or not)  the testing hypothesis. Because the ratio of edges supporting H1 out of all edges is much higher than the ratio of DE genes out of all available genes in the data sets, PURE is expected produce a significantly more accurate result in more situations.
+
+
+%
+%However, the results shown here, demonstrate the performance of the proposed approach 
+%%will yield better results 
+%compared to the existing approaches when using currently available resources. 
+%The expectation is that an improvement of the quality of the underlying database will improve the results of all methods, rather than favor a particular one. 
+
+
+
+
+%In the experiment in which the chemical C is lacking (data set 14 in Table~\ref{Datasets}), instead of testing the hypothesis 2 that tests whether the chemical C's level is lower than normal, one must test the hypothesis 1 with the true CDT being ``chemical C deficiency''.
+
+
+
+
+
+%
+%
+%
+%
+%Among all the benchmarking methods included in this study, only IPA takes the sign of CDTs - genes associations under consideration and can predict whether a significant CDTs is activated or inhibited (corresponding to H1 and H2), as our proposed method does, so a more detailed theoretical comparison is warranted.
+%Although IPA derives these two scores  described above for each CDT, the result is solely determined by the z-score: the regulator is determined as ``activated''  or ``inhibited'' if its z-score $\geq 2$ or $\leq -2$, respectively~\cite{kramer2013causal}. In other words, the statistic calculated from the data will determine the outcome. In contrast, our proposed method uses a more classical approach in which the hypotheses are formulated before hand, independently of the data as in a canonical hypothesis testing. Our proposed method  considers each hypothesis separately, and calculates a p-value that will indicate whether the null hypothesis can be rejected. 
+%For our proposed method, the null hypothesis is that ``CDT X has not had an impact on the measured gene expression changes" whereas the first research hypothesis is that ``CTD X was present and had an impact on the gene expression changes'' and the second, independent, research hypothesis is that ``CTD X was lacking and its absence had an impact on the gene expression changes''. 
+%The testing done in the proposed approach is more rigorous in terms of statistical testing, but such approach can potentially reject the null hypothesis for both research hypotheses which would be difficult to interpret from a biological perspective. In contrast, the approach used by IPA avoids such potentially ambiguous situations because the z-score can be either positive or negative but not both. The most important difference stemming from these two approaches is that our proposed method  can identify CDTs that can reverse the observed genes expression changes because it considers both sets of statistical hypothesis. This means that our proposed method can be used for drug repurposing - situations in which one is given a   gene expression profile associated with a given disease and the task is to identify a drug that could revert some of the changes. In contrast, IPA only considers the CDTs that are present and focuses whether they are ``activated'' or ``inhibited''. 
+%Another  difference worth mentioning between IPA and our proposed method  is that while our proposed method  considers and derives a p value corresponding to the hypothesis testing for every CDT in the knowledge base, IPA does not derive z-score for all CDT in the knowledge base.
