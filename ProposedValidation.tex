@@ -1,10 +1,10 @@
 
 
-\section{Proposed validation}
+\subsection{Proposed validation}
 
 In this chapter, we discuss our approach to validate the proposed method and compare it with existing methods with some benchmarking data sets. The competitive methods are ORA, Kolmogorov-Smirnov test, Wilcoxon, FGSEA, and IPA. We describe 16 data sets from three species, namely human, mouse, and rat, with 8 different CDTs used for methods comparison. %Out of these 16 data sets, 14 data sets are used for testing the hypothesis 1, and the other two are used for validating the hypothesis 2.
 
-\subsection{Benchmarking methods}
+\subsubsection{Benchmarking methods}
 %\subsubsection{}
 
 The ORA family of methods, as well as other tests, such as KS, Wilcoxon, and FGSEA, are widely used in gene set analysis to determine whether  a particular gene set - such as the genes associated to a given GO term or pathway - is significantly affected in the given phenotype. In principle, the same approach could be used to decide whether a given CDT could be related to the phenotype by considering the set of genes known to be affected by the given CDT. 
@@ -54,7 +54,7 @@ For our proposed method, the null hypothesis is that ``CDT X has not had an impa
 The testing done in the proposed approach is more rigorous in terms of statistical testing, but such approach can potentially reject the null hypothesis for both research hypotheses which would be difficult to interpret from a biological perspective. In contrast, the approach used by IPA avoids such potentially ambiguous situations because the z-score can be either positive or negative but not both. The most important difference stemming from these two approaches is that our proposed method  can identify CDTs that can reverse the observed genes expression changes because it considers both sets of statistical hypothesis. This means that our proposed method can be used for drug repurposing - situations in which one is given a   gene expression profile associated with a given disease and the task is to identify a drug that could revert some of the changes. In contrast, IPA only considers the CDTs that are present and focuses whether they are ``activated'' or ``inhibited''. 
 Another  difference worth mentioning between IPA and our proposed method  is that while our proposed method  considers and derives a p value corresponding to the hypothesis testing for every CDT in the knowledge base, IPA does not derive z-score for all CDT in the knowledge base. %For example, Methylprednisolone is in the IPA's knowledge base and has z-score in the experiment 15, but no z-score is reported in the experiment 16 (Table ~\ref{H2Result}).
 
-\subsection{Validation data sets}
+\subsubsection{Validation data sets}
 
 We downloaded 16 benchmark data sets from Gene Expression Omnibus database (GEO: \url{https://www.ncbi.nlm.nih.gov/geo/}). 
 %These data sets are experiments in which gene expressions of control samples are compared with samples exposed to a studied CDT. 
@@ -103,9 +103,9 @@ Experiment ID & GEO ID& Organism& True CDT  &Hypothesis\\
 \end{table}
 
 
-\subsection{Assessment Criteria}
+\subsubsection{Assessment Criteria}
 
-%\subsection{Assessment}
+%\subsubsection{Assessment}
 
 We would evaluate and compare the performance of our proposed method with the other five approaches, namely Over Representation Analysis (ORA) using hypergeometric test, Kolmogorov-Smirnov test (KS)\cite{massey1951kolmogorov}, Wilcoxon\cite{wilcoxon1945individual}, FGSEA~\cite{korotkevich2021fast}, and the causal analysis used in Ingenuity Pathway Analysis (IPA)~\cite{kramer2013causal}.
 
@@ -284,7 +284,7 @@ Similarly to testing the H1, we would validate whether a method can identify the
 %\end{figure*}
 
 
-\subsection{Definition of success}
+\subsubsection{Definition of success}
 To investigate whether the proposed method  is significantly superior to the other methods in term of testing the H1, we would use a Wilcoxon test to compare the ranks and number of CDTs reported by PURE with those provided by the  other methods. 
 %The p values for the rank comparison of PURE and IPA-CDT, ORA, KS, FGSEA, IPA, and Wilcoxon are 0.02, 4E-4, 8E-6, 4E-5, 6E-3, and 1E-5, respectively. 
 If the rank of the true CDTs is not available in an experiment, we replace the NA ranks by the number of significant CDTs reported in the corresponding experiment plus one, 

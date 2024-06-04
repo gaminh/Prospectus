@@ -1,5 +1,37 @@
-\section{Problem Description}
+\section{Limitations, unsolved challenges, \newline and problem description}
 \label{chap:ProblemDescription}
+
+\input{ExisitingMethodsLimitation}
+\clearpage
+
+\subsection{Problem description}
+
+Typically a comparative analysis of gene expression data yields a list of genes that are differentially expressed (DE) across the given phenotypes (e.g. disease vs healthy).
+Widely used statistical methods for DE gene identification include t-test \cite{Tian:2005}, Z-score \cite{kim2005page}, ANOVA \cite{al2005discovering}, etc. Based on the given list of genes, one of the goals of analyzing high-throughput experiments is to identify the significantly impacted pathways.
+Although this list of genes provides valuable information regarding the changes across phenotypes, and play important roles in the downstream analysis, they alone can not explain the complex mechanisms that are involved in the given condition.
+
+One of the most common techniques used to reduce the complexity of this problem is to group  genes into various signaling pathways.
+Each of these pathways contains a group of genes which interact with one another to perform a particular biological activity. 
+In other words, a pathway is a network which reflects known physical interactions of genes and proteins which pertain to a given biological process.
+
+With hundreds of methods proposed in the past two decades, it would be a challenge for the researchers to choose the best suitable method for their analysis among hundreds of other methods.
+Every researcher who is looking for a pathway analysis would be interested to know which methods work best in which situation and under which benchmarking criteria, when one should choose a non-TB vs TB method, or whether the pathway analysis method chosen is bias toward the condition studied, i.e. the method tends to identify the specific pathways as significant even under the null hypothesis (the samples are unrelated to the condition).
+Although there are few review papers that discussed the differences in the technique used, the advantage or disadvantage of popular methods, there are 
+
+
+%Here, for the first time, we would present a comparison of the performances of 11 representative pathways analysis methods on 86 real data sets from two species: human and mouse. 
+%To our knowledge, this is the highest number of real data sets used in a comparative study on pathway analysis methods.
+%The second assessment investigates the potential bias of each method and pathway.
+%
+%This work would provides precise, objective, and reproducible answers to the following important and currently unanswered questions: (i) is there any difference in performance between non-TB and TB methods?, (ii) is there a method that is consistently better than the others in terms of its ability to identify target pathways, accuracy, sensitivity, specificity, and the Area Under the receiver operating characteristic Curve (AUC)?, (iii) are there any specific pathways that are biased (in the sense of being more likely or less likely to be significant across all methods)?, and (iv) do specific methods have a bias toward specific pathways (e.g. is pathway X likely to be always reported as significant by method Y)?. 
+%This benchmark would provide a guidance to help researchers select the right method to deploy in analyzing their data based on any kind of scientific criteria. 
+%At the same time, it would be of interest to any computational biologists or bioinformaticians involved in developing new analysis methods. 
+%For such researchers, this article is expected to become the benchmark against which any future analysis method will have to be compared. 
+%Finally, because of the bias analysis of all known KEGG pathways included here, this manuscript is also expected to be extremely useful to many people involved in the curation and creation of pathway databases.
+
+
+
+While pathway analysis is a very useful tool that helps us understand the impact of the DE genes and the mechanism they might be involved, it does not provide the information on the cause of these phenotypes or disease conditions.
 
 Everyday, we are surrounded by or/and exposed to many different chemicals, drugs, and toxicants in different shapes and forms, which could be natural origin, raw material, or produced by human activities. Some of them are harmful to our body, such as  carbon monoxide (CO) emitted by combustion engine or wildfires, whereas other are vital to our existence, such as vitamin or minerals, of course with a certain amount. Exposure to cigarette smoking, fumes, gases, or irritant chemicals are major risk for chronic obstructive pulmonary disease ~\cite{boschetto2006chronic} or numerous cancer sites such as lung, skin, liver, etc.~\cite{clapp2008environmental}. Longnecker \textit{et al.} discovered the association between DDT, a chemical used in insecticide, with preterm births, which is a major contributor to infant mortality~\cite{longnecker2001association}.
 According to Prüss-Ustün \textit{et al.}, toxic exposure to chemicals were linked to 4.9 million deaths in 2004 (8.3\% of the total) \cite{pruss2011knowns}. Also in this article, the authors concluded that the most common toxic chemicals contributed to these deaths are indoor smoke from solid fuel use, air pollution, second-hand smoke, etc. Moreover, many other chemicals, e.g. used in pesticides, are known to have severed impact on human health.

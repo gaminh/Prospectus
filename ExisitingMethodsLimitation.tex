@@ -1,7 +1,49 @@
-\section{Unsolved challenges and/or limitations of existing methods}
+\subsection{Unsolved challenges and/or limitations of existing methods}
 \label{chap:ExisingMethodsLimitation}
 
-Although this area is promising and has been intensely researched in the past decade, the existing approaches in the field are limited in either one of the following ways.
+\subsubsection{Pathway analysis}
+
+Because of the importance of pathway analysis, hundreds of pathway analysis methods have been proposed thus far~\cite{DraghiciOntologicalToolsReview:2005,Khatri:2002,mitrea2013methods}.
+Hence, review papers are important and crucial because they compare and benchmark these proposed methods and provide guidance for researchers to choose the most suitable method for their analyses.
+Although several review papers have attempted to guide users in determining how various methods related to each other, their validation and comparison approaches have some limitations.
+
+One of the main challenges in assessing pathway analysis methods is that it is difficult to assess the correctness of whatever comes out from the pathway analysis. Many times, papers describing new methods validate them on only 2-3 data sets followed by a human interpretation of the results.
+However, this approach has several problems. First, it is biased and not objective. Living organisms are very complex systems, and almost any  analysis result will be supported by some references. Without a deep knowledge of the phenomena involved in the given phenotype, it is impossible to judge objectively whether such connections are really meaningful or not. Second, it is not scientifically sound. A scientific approach should formulate some hypotheses in advance, i.e. what a successful outcome of the pathway analysis should look like. Interpreting and justifying the results obtained from an experiment by searching the supporting literature as evidence are not scientifically sound.
+
+Some reviews provided a comprehensive overview of the methods but did not evaluate the performances using benchmark data sets~\cite{mitrea2013methods, Khatri:2012}. 
+%Mietrea \textit{et al.} ~\cite{mitrea2013methods},
+%
+%~\cite{Khatri:2012}.
+Very rarely, some comparisons are done using a few data sets~\cite{bayerlova2015comparative}, most often simulations. 
+Very few authors have attempted to compare the actual performance of such methods. 
+In \cite{bayerlova2015comparative} and \cite{ihnatova2018critical}, the authors assessed the methods based primarily on their performances on simulated data sets.
+The problem with this approach is that any simulated data set is constructed based on a set of assumptions, few of which apply to the real data. 
+The resulting comparison not only is difficult to reproduce, but also has some inherent bias.
+A very interesting article by Reimand \textit{et al.} provided an astonishing perspective on the effect of outdated annotations on pathway enrichment analysis~\cite{Wadi:2016} but again, comparing the capabilities of the various methods was outside its scope. 
+
+
+
+A more objective and reproducible way of validating and comparing methods is using some data sets related to a disease or a condition that has a pathway describing the known mechanisms involved in that particular condition.
+Such pathway can be considered the ``target pathway" in any studies involving that condition.
+The methods studied will be evaluated based on their ability to identify target pathways. 
+An ideal method would identify the target pathway as significantly impacted and rank it highly among other pathways.
+
+Tarca \textit{et al.} \cite{tarca2013comparison} was arguably the first article that compared 16 different  methods using 42 data sets related to 17 diseases using this type of assessment. However, this comparison is limited to gene set methods (non-TB). 
+Although this validation approach is far more superior than using simulated data sets and is widely accepted, it has a weakness. For each data set, this approach only focuses on one true positive, the target pathway related to the particular phenotype studied. The problem is that we do not know whether there are other truly impacted pathways. 
+In order to address this problem, one should use real data sets in which the truly impacted pathways are actually known. 
+
+
+The best such data involve using knock-out experiments, where the phenotype is caused by knocking down a particular gene (KO gene). Pathways containing the KO gene are true positives because they contain the true cause of the phenotype and are genuinely implicated in the changes associated to the phenotype. Any pathway that does not contain the KO gene is a true negative because it does not contain the true cause of the phenomenon, but only changes triggered by the true cause. Because both true positives and true negatives are known, in this setup one can calculate the classical  accuracy, sensitivity, specificity, and  AUC. To the best of our knowledge, no paper has previously performed such an extensive assessment of the existing methods using KO data sets.
+
+Another significant limitation of these review papers attempting to benchmark pathway analysis methods is that they do not take into account the performance of these methods under the null hypothesis, which is the main cause of type I and type II errors in pathway analysis results. 
+Although existing pathway analysis methods work under the assumption that the p-values are uniformly distributed under the null hypothesis (i.e. the distributions of the p-values generated by the pathway analysis methods are uniform), Nguyen \textit{et al.} ~\cite{nguyen2017DANUBE, nguyen2018network} showed that this assumption does not hold true for some widely used pathway analysis methods. 
+Therefore, these pathway analysis methods will exhibit a systematic bias in identifying impacted pathways.
+As a result, the list of significant pathways provided by these  analysis methods often include pathways which are not significantly impacted (false positives), as well as fail to include pathways that are truly impacted (false negatives).
+None of the existing review papers discusses this major problem.
+
+\subsubsection{Drug repurposing and causal analysis}
+
+Although this area is promising and has been extensively researched in the past decade, the existing approaches in the field are limited in either one of the following ways.
 
 The existing methods depend significantly on the quality of the curated chemical-gene expression association database. 
 No algorithm would be able to identify the true CDT if no association between this CDT and the DE genes (or any gene) are annotated in the database used.
