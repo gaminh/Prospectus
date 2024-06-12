@@ -103,7 +103,7 @@ Experiment ID & GEO ID& Organism& True CDT  &Hypothesis\\
 \end{table}
 
 
-\subsubsection{Assessment Criteria}
+\subsubsection{Assessment criteria}
 
 %\subsubsection{Assessment}
 
@@ -111,7 +111,8 @@ We would evaluate and compare the performance of our proposed method with the ot
 
 
 
-\subsubsection{Assessment of Hypothesis 1}
+\textbf{Assessment of hypothesis 1}
+
 We would evaluate these methods using 14 benchmark data sets from three different species, namely human, mouse, and rat (See Table \ref{Datasets}, experiment ID from 1 - 14). 
 In these data sets, gene expressions were measured after the ingestion of a given CDT.
 Hence, the cause of all the changes observed  throughout the system is known. Furthermore, this particular situation corresponds to  H1, where the level of the CDT is higher than normal.
@@ -139,7 +140,7 @@ We expect a good method would derive a low number of CDTs in the result, ideally
 %The p value for the number of CDTs reported comparison between PURE and IPA-CDT, ORA, KS,  FGSEA, IPA, and Wilcoxon are 0.04, 4E-4, 9E-6, 0.4, 4E-5, and 2E-6, respectively. 
 %Since all  p values are less than the standard threshold of 0.05 (except for FGSEA while comparing the number of CDTs reported), PURE's performance can be considered significantly better than all of the methods included in the study, in terms of both the rank of the true CDTs, as well as the number of significant CDTs reported.
 
-\subsubsection{Assessment of Hypothesis 2}
+\textbf{Assessment of hypothesis 2}
 
 The assessment of these methods on testing H2 is more challenging since the data sets in which the ground truth is known are scant, i.e. an CDT is truly lacking in the system. Another important application for testing the H2 is drug repurposing. A CDT could potentially reverse the  gene expression changes caused by the disease and therefore be a candidate for drug repurposing. 
 %Similar approach using the data set GSE147507, in which the expression of NHBE and A549 cells infected with COVID-19 were compared with their corresponding control, proposed Methylprednisolone to improve the outcome in server COVID-19 cases~\cite{DraghiciCOVID:2021}. This finding was aligned with several clinical trials from different research groups~\cite{DraghiciCOVID:2021, corral2021methylprednisolone,salton2020prolonged, meduri2020pharmacological}. 
@@ -284,7 +285,8 @@ Similarly to testing the H1, we would validate whether a method can identify the
 %\end{figure*}
 
 
-\subsubsection{Definition of success}
+\textbf{Definition of success}
+
 To investigate whether the proposed method  is significantly superior to the other methods in term of testing the H1, we would use a Wilcoxon test to compare the ranks and number of CDTs reported by PURE with those provided by the  other methods. 
 %The p values for the rank comparison of PURE and IPA-CDT, ORA, KS, FGSEA, IPA, and Wilcoxon are 0.02, 4E-4, 8E-6, 4E-5, 6E-3, and 1E-5, respectively. 
 If the rank of the true CDTs is not available in an experiment, we replace the NA ranks by the number of significant CDTs reported in the corresponding experiment plus one, 
