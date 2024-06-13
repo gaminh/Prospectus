@@ -1,5 +1,9 @@
-\section{Literature review}
+\section{Problem description and literature review}
 %\subsection{Existing methods in the fields}
+
+\input{Problem_Description}
+
+\subsection{Literature review}
 
 
 When presented with a gene expression profile, researchers typically begin by performing pathway analysis to identify the affected pathways and understand the mechanisms of the differentially expressed (DE) genes. In this section, we will review and discuss some of the most widely used approaches in pathway analysis, which are often categorized into two groups: ``non topology-based''  (non-TB) and ``tolology-based'' (TB) methods.
@@ -8,7 +12,7 @@ Resources such as the Comparative Toxicogenomics Database, Connectivity Map (CMa
 
 
 
-\subsection{Pathway analysis}
+\subsubsection{Pathway analysis}
 The current pathway analysis methods can be divided into two main categories. 
 The first category includes \textbf{``non topology-based'' methods} (non-TB methods), i.e. methods  that do not take advantage of prior knowledge regarding the positions and roles of the genes within the pathways, the directions and types of the signals transmitted from one gene to another, etc.  
 These are also known as gene set analysis methods. 
@@ -122,9 +126,9 @@ Statistical tests, such as Fisher's exact test or hypergeometric test, are used 
 
  
 
-Besides ORA and FCS methods, classical statistical tests, such as Kolmogorov-Smirnov test \cite{massey1951kolmogorov} (KS test) and Wilcoxon Rank Sum test~\cite{wilcoxon1945individual} (WRS test), can also be applied in the context of pathway analysis (more details about KS test and WRS test will be described in the following paragraphs). 
-The common characteristic of these methods is that they focus on the expression changes of the DE genes without considering their positions and functions in the pathways.
-Therefore, they also belong to the non-TB category.
+%Besides ORA and FCS methods, classical statistical tests, such as Kolmogorov-Smirnov test \cite{massey1951kolmogorov} (KS test) and Wilcoxon Rank Sum test~\cite{wilcoxon1945individual} (WRS test), can also be applied in the context of pathway analysis (more details about KS test and WRS test will be described in the following paragraphs). 
+%The common characteristic of these methods is that they focus on the expression changes of the DE genes without considering their positions and functions in the pathways.
+%Therefore, they also belong to the non-TB category.
 
 In principle, considering the pathways as simple un-ordered and unstructured collection of genes -- as the non-TB methods do -- discards a substantial amount of information about the biological processes described by these pathways. In essence, all the dependencies and interactions between genes that are meant to capture and describe the biological phenomenon are completely ignored. 
  \textbf{Topology-based (TB)} methods have been developed in an attempt to include all this additional information in the analysis.
@@ -209,9 +213,6 @@ P-values obtained from these two types of evidence are then combined using Fishe
 Finally, the pathway level p-value is computed using a hypergeometric test.
 
 
-\item etc.
-
-
 \end{itemize}
 
 Nguyen \textit{et al.} proposed BLMA~\cite{nguyen2017blma,nguyen2015novel}, a framework that improves the result in pathway meta-analysis. Meta-analysis is performed when researchers have to analyze many data sets ($m$ data sets) of the same condition, that might result different outputs because of various factors, such as batch effect, different lab conditions, or different population that samples are collected from.
@@ -221,7 +222,7 @@ The framework consists two levels of meta-analysis. First, for each study, it di
 
 
 
-\subsection{Drug repositioning and causal analysis}
+\subsubsection{Drug repositioning}
 
 The goal of drug repositioning is to identify new therapeutic applications for existing drugs. Since these drugs are already approved, they can skip the Phase I clinical trials in the drug approval pipeline, i.e. testing the safety of the drug. Therefore this approach is faster and more cost-efficient than the process of new drug discovery, which takes on average 15 years and more than one billion dollars for each drug \cite{chong2007new}. 
 
@@ -239,13 +240,13 @@ Swamidass evaluated the chemical similarity and bioactivity profiles of compound
 
 Keiser \textit{et  al.}  proposed different computational and experimental methods used to predict new drug-target interactions, one of them compares the chemical structure of known drugs to identify similar compounds that might interact with new targets~\cite{keiser2009predicting}.  Not only the method revealed thousands of new associations that are later verified through experiments, it can also explain some of the side effects of existing drugs.
 
-Yamanishi \textit{et  al.} integrates various types of data: (i) chemical space which is the chemical structure similarity space of possible chemical compounds; and (ii) genomic space which indicates the amino acid sequence similarity space of possible proteins, to infer unknown drug-target interactions. The authors use a supervised learning method that used  drug–target interactions available from many public databases to build a model that learn the ``gold standard''. The model is then applied to compounds and proteins to infer their interactions.The model’s performance is evaluated using cross-validation techniques to ensure robustness and generalizability. Metrics such as precision, recall, and area under the ROC curve (AUC) are used to assess the accuracy of predictions. Predicted interactions are further validated using external datasets or experimental data to confirm their biological relevance and practical applicability.
-A similar approach was proposed by Bleakley \textit{et al.} where the authors proposed a supervised learning method to predict unknown drug–target interactions. In this work, they used bipartite local models to first predict target proteins of a given drug, then try to pin point drugs targeting those proteins~\cite{bleakley2009supervised}.
+Yamanishi \textit{et  al.} integrates various types of data: (i) chemical space which is the chemical structure similarity space of possible chemical compounds; and (ii) genomic space which indicates the amino acid sequence similarity space of possible proteins, to infer unknown drug-target interactions~\cite{bleakley2009supervised}. The authors use a supervised learning method that used  drug–target interactions available from many public databases to build a model that learn the ``gold standard''. The model is then applied to compounds and proteins to infer their interactions. The model’s performance is evaluated using cross-validation techniques to ensure robustness and generalizability. Metrics such as precision, recall, and area under the ROC curve (AUC) are used to assess the accuracy of predictions. Predicted interactions are further validated using external datasets or experimental data to confirm their biological relevance and practical applicability.
+A similar approach was proposed by Bleakley \textit{et al.} where the authors proposed a supervised learning method to predict unknown drug–target interactions. In this work, they used bipartite local models to first predict target proteins of a given drug, then try to pin point drugs targeting those proteins.
 The technique that combines chemical structure information, drug-gene interactions and bipartite graph model was also used by Li and Lu ~\cite{li2012new} to calculate drug pairwise similarity.
 
 Zheng \textit{et al.} proposed a method called ``weighted ensemble similarity'' (WES) that identifies drug targets based on a large-scared scanning in the drug-target relationship database, rather than comparing the similarity between two compounds~\cite{zheng2015large}.  It constructs various similarity matrices, assigns weights based on each measure’s predictive power, and combines them into composite matrices for drugs and targets. Matrix factorization or collaborative filtering techniques are then applied to these composite matrices to predict interactions. 
 
-Susnow \textit{et al.} developed a random forest model trained from a training set of 100 compounds with published inhibition constants to predict cytochrome P450 2D6 inhibition from 2D chemical structure.
+Susnow \textit{et al.} developed a random forest model trained from a training set of 100 compounds with published inhibition constants to predict cytochrome P450 2D6 inhibition from 2D chemical structure~\cite{susnow2003use}.
 
 Tan \textit{et al.} integrated 3D drug chemical structure information with other information, such as drug–target interactions
 and gene semantic similarity information to derive a score reflecting the consensus response scores between each drug and all proteins in the database~\cite{tan2014drug}. They create a drug similarity network that contain 33 modules of drugs with similar MoA.
@@ -268,7 +269,7 @@ There are two main approaches of computational and knowledge-based drug repositi
 The former approaches hypothesize that if the compound's effect are negatively correlated with the disease DE genes, e.g. if a gene is up-regulated by a drug's effect and down-regulated by a disease, that drug would be a good candidate to revert the phenotype's DE genes, and hence can potentially suppress the phenotype~\cite{sirota2011discovery, mcart2011identification}. Some examples of studies using this idea in drug repurposing: Claerhout \textit{et al.} proposed using vorinostat as a candidate treatment for gastric cancer~\cite{claerhout2011gene}; Chen \textit{et al.} successfully identified and verified chlorpromazine and trifluoperazine as the alternative for sorafenib to treat hepatocellular carcinoma~\cite{chen2011gene}; Dudley \textit{et al.} proposed topiramate which was approved for epilepsy as a alternative treatment for inflammatory bowel disease~\cite{dudley2011computational}. 
 
 Hu and Agarwal created a comprehensive network that links human diseases with potential therapeutic drugs based on their effects on gene expression profiles~\cite{hu2009human}.
-he authors use gene expression profiles from publicly available databases, including data on various diseases and the effects of numerous drugs on gene expression in different cell lines.
+The authors use gene expression profiles from publicly available databases, including data on various diseases and the effects of numerous drugs on gene expression in different cell lines.
 The study employs computational methods to match disease-associated gene expression signatures with drug-induced gene expression profiles.
 By identifying drugs that can reverse or mimic the gene expression changes observed in diseases, the authors construct a disease-drug network.
 The network helps identify existing drugs that could potentially be repurposed for treating different diseases based on their genomic effects.
@@ -292,17 +293,17 @@ cMap can be used in drug repurposing application in two ways: (i) by identifying
 
 LINCS, a project funded by NIH, has used L1000 technology, which is a technology developed by cMap team, to generate over one million gene expressions profiles. LINCS is basically a matrix of 22,268 rows represents genes and over millions of columns correspond to millions of perturbations induced by small molecules. It is available via the LINCS web based application (http://www.lincscloud.org/l1000/). The advent of cMap and LINCS has paved the way for systematic large-scale research in drug repositioning.  Peyvandipour \textit{et al.} used the combination of cMap and LINCS together with Kyoto Encyclopedia of Genes Genomics (KEGG) \cite{ogata1999kegg}, a signaling pathway repository, to create a so-called drug-desease-network~\cite{peyvandipour2018novel}. They later use the impact analysis ~\cite{draghici2007systems} to derive a score to each drug-disease pair, which is used for identifying candidate drugs.
 
-To overcome cMAP limitation, Huang \textit{et al.} constructed a drug-protein connectivity map (DMAP) that consists drug-to-protein effects and effect score~\cite{huang2015dmap}. DMAP have a total of 438,004 chemical-to-protein relationships of 289,571 chemicals and 5,196 proteins. It covers 24,121PubChem Compound ID (CID), 14-fold increase of coverage compared to cMAP. 
+To overcome cMAP limitation, Huang \textit{et al.} constructed a drug-protein connectivity map (DMAP) that consists drug-to-protein effects and effect score~\cite{huang2015dmap}. DMAP have a total of 438,004 chemical-to-protein relationships of 289,571 chemicals and 5,196 proteins. It covers 24,121 PubChem Compound ID (CID), 14-fold increase of coverage compared to cMAP. 
 
 Beside mRNA sequencing data, microRNAs (miRNAs) have been extensively studied and show potential for identifying aggressive disease, such as cancer, for their roles in regulating different types of cell activities~\cite{ding2014micrornas, wen2014micrornas}. Many studies have shown that small molecules or drugs can regulate miRNA expression and discover the potential of this data type in drug repurposing.
 Jiang \textit{et al.} used CMap to identify the biological connections between small
-molecules and miRNAs in 23 different cancers data sources~\cite{jiang2012identification}.. They construct a so called Small Molecule-MiRNA Network for each cancer. These networks are then divided into smaller modules, in which small molecules with similar chemical structures, MoA, or drug interactions are connected one miRNA; or miRNAs having similar target genes are connected with one small molecule. These modules can be used to suggest therapeutic potentials and new indications for existing drugs.
+molecules and miRNAs in 23 different cancers data sources~\cite{jiang2012identification}. They construct a so called Small Molecule-MiRNA Network for each cancer. These networks are then divided into smaller modules, in which small molecules with similar chemical structures, MoA, or drug interactions are connected one miRNA; or miRNAs having similar target genes are connected with one small molecule. These modules can be used to suggest therapeutic potentials and new indications for existing drugs.
 Liu \textit{et al.} \cite{liu2013sm2mir} manually curated from nearly 2000 articles to create the so-called SM2miR database, that contains 2,925 relationships between 151 small molecules and 747 miRNAs in 17 species.
 
 In the past decade, genome-wide association studies (GWAS) have helped discovering variants, that are associated with particular disease or trait~\cite{visscher2012five, hebbring2014challenges}. Sanseau \textit{et al.} aims to demonstrate the potential of GWAS in drug repositioning application~\cite{sanseau2012use}. The authors use GWAS data to identify genetic variants associated with various diseases. These variants often point to specific genes or biological pathways implicated in the disease. By mapping the identified genes and pathways to known drug targets, the study assesses whether existing drugs could be repurposed to treat conditions associated with these genetic findings. Okada \textit{et al.} examined how genetic studies of rheumatoid arthritis (RA) enhance our understanding of the disease and aid in drug discovery \cite{okada2014genetics}. The paper discusses numerous genetic variants identified through GWAS that are associated with RA. These variants highlight genes and pathways involved in immune function and inflammation that are targeted by already approved drugs.
 
 
-\subsection{Causal analysis}
+\subsubsection{Causal analysis}
 
 Causal analysis refers to an analysis that aims to infer the CDT that potentially causes the observed expression changes. The methods in this category often hypothesize that a drug compound could cause a disease phenotype if the compound's gene signature is positively correlated with disease's gene signature~\cite{huang2013inferring}. Although this approach uses the gene expression profiles to reach the same goal as our proposed method, it utilizes a totally different technique. A more direct approach to identify the CDT is applying graph theories on the cause-effect network between CDT and genes. Chindelevitch \textit{et al.} used two commercial knowledge bases, Selventa Inc. (\href{http://www.selventa.com}{http://www.selventa.com}) and Ingenuity Inc. (\href{http://www.ingenuity.com}{http://www.ingenuity.com}) to construct a network of molecular causal interactions  that would suggest molecular hypotheses that explain the observed changes in gene expression profiles. For each molecule, they used a scoring system which performs a subtraction of  the number of genes against the hypotheses from the number of genes supporting the hypotheses~\cite{chindelevitch2012causal}. Subsequently, they applied the distribution of the scores under the null and Fisher's exact test to compute the statistical significance. More recently, Kr{\"a}mer \textit{et al.} published a paper that presents the causal analysis approach in Ingenuity Pathway Analysis (IPA). This work has very similar goals with our approach, hence we will discuss and compare its performance with ours in the following subsections. Although there are computational methods using the similar techniques on specific applications, %e.g. ~\cite{pollard2005computational} on Type 2 Diabetes Mellitus, 
 large-scale and more general attempts are scarce in this field.

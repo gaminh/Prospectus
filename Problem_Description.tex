@@ -1,10 +1,5 @@
-\section{Limitations, unsolved challenges, \newline and problem description}
-\label{chap:ProblemDescription}
-
-\input{ExisitingMethodsLimitation}
-\clearpage
-
 \subsection{Problem description}
+\label{chap:ProblemDescription}
 
 Typically a comparative analysis of gene expression data yields a list of genes that are differentially expressed (DE) across the given phenotypes (e.g. disease vs healthy).
 Widely used statistical methods for DE gene identification include t-test \cite{Tian:2005}, Z-score \cite{kim2005page}, ANOVA \cite{al2005discovering}, etc. Based on the given list of genes, one of the goals of analyzing high-throughput experiments is to identify the significantly impacted pathways.
@@ -15,8 +10,9 @@ Each of these pathways contains a group of genes which interact with one another
 In other words, a pathway is a network which reflects known physical interactions of genes and proteins which pertain to a given biological process.
 
 With hundreds of methods proposed in the past two decades, it would be a challenge for the researchers to choose the best suitable method for their analysis among hundreds of other methods.
-Every researcher who is looking for a pathway analysis would be interested to know which methods work best in which situation and under which benchmarking criteria, when one should choose a non-TB vs TB method, or whether the pathway analysis method chosen is bias toward the condition studied, i.e. the method tends to identify the specific pathways as significant even under the null hypothesis (the samples are unrelated to the condition).
-Although there are few review papers that discussed the differences in the technique used, the advantage or disadvantage of popular methods, there are 
+Every researcher who is looking for a pathway analysis would be interested to know which methods work best in which situation and under which benchmarking criteria; when one should choose a non-topology based (non-TB) method, which treats pathways as lists of genes and disregard the topology of the pathway, versus topology based method, which takes interactions between genes and their positions in the pathway into consideration; or whether the pathway analysis method chosen is bias toward the condition studied, i.e. the method tends to identify the specific pathways as significant even under the null hypothesis (the samples are unrelated to the condition).
+
+Although there are few review papers that discussed the differences in the technique used, the advantage or disadvantage of popular methods, they have at least one of the following limitations: they only discussed the approaches and theoretical aspects of the methods; they only used simulated data sets that were created under some assumption and often do not reflect all the complexity of the real data sets; they only compared some subgroups of methods; and they do not consider the bias under the null.
 
 
 %Here, for the first time, we would present a comparison of the performances of 11 representative pathways analysis methods on 86 real data sets from two species: human and mouse. 
