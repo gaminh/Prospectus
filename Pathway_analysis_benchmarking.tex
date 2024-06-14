@@ -13,8 +13,10 @@ All   data sets were downloaded from Gene Expression Omnibus database. We normal
 Six of these are non-TB methods: Fisher's Exact Test \cite{Fisher:1951}, Kolmogorov-Smirnov test \cite{massey1951kolmogorov}, Wilcoxon Rank Sum test \cite{wilcoxon1945individual}, GSA \cite{Efron:2007}, PADOG \cite{Tarca2012down}, and GSEA \cite{Subramanian:2005}. The other five of them are TB methods: SPIA \cite{SPIAversion2.14.0}, ROntoTools \cite{RontoToolsVersion1.2.0}, CePaGSA, CePaORA \cite{gu2012centrality, gu2013cepa}, and PathNet \cite{Dutta:2012}. We provide details of 11 methods that we would do the benchmarking study in Table~\ref{table:PAmethods}. 
 
 \begin{table}
+
 \centering
 \caption{Pathway analysis methods investigated in this study. Versions of KEGG of CePa methods are unknown because they are embedded in the software\label{table:PAmethods}} 
+\small
 \begin{tabular}{@{}clllll@{}}\hline
  & Method & Category  & R-function/package version & Pathway database \\\hline
  1 & Fisher's Exact Test &	non-TB 	& fisher.test & KEGG v.65\\ 
@@ -171,17 +173,17 @@ We also perform a higher level comparison between the ranks and p value of the t
 \hline
  \textbf{GEO ID}& \textbf{KO gene} & \makecell{\textbf{\#Impacted} \\\textbf{Pathways} }& \textbf{\#Nornal} & \textbf{\#Condition}& \textbf{Pubmed ID} & \textbf{Tissue} & \textbf{Platform}  \\
  \hline
- GSE22873	&Myd88	&19	&11	&8	&22075646	&Liver	&Mouse430\_2 \\
-GSE6030	&Neurod1	&1	&3	&3	&17630985	&Pineal gland	&Mouse430\_2 \\
+GSE22873	&Myd88	&19	&11	&8	&22075646	&Liver				&Mouse430\_2 \\
+GSE6030		&Neurod1	&1	&3	&3	&17630985	&Pineal gland			&Mouse430\_2 \\
 GSE29048	&Pdx1	&3	&4	&4	&22135308	&Intestinal epithelium	&Mouse430\_2\\
-GSE70302	&IL1a	&20	&4	&4	&26224856	&Spinal cord	&MoGene-1\_0-st\\
-GSE70302	&IL1b	&34	&4	&4	&26224856	&Spinal cord	&MoGene-1\_0-st\\
-GSE58120	&IL2	&3	&6	&6	&25652593	&Myeloid dendritic cells	&MoGene-1\_0-st\\
-GSE46211	&TGFBR2	&20	&12	&6	&24496627	&Anterior palatal tissue \& posterior palatal tissue	&Mouse430\_2\\
-GSE49166	&BHLHE40	&1	&3	&3	&24699451	&CD4 T cells	&MoGene-1\_0-st\\
+GSE70302	&IL1a	&20	&4	&4	&26224856	&Spinal cord			&MoGene-1\_0-st\\
+GSE70302	&IL1b	&34	&4	&4	&26224856	&Spinal cord			&MoGene-1\_0-st\\
+GSE58120	&IL2		&3	&6	&6	&25652593	&Myeloid dendritic cells	&MoGene-1\_0-st\\
+GSE46211	&TGFBR2	&20	&12	&6	&24496627	&Anterior \& posterior palatal tissue	&Mouse430\_2\\
+GSE49166     &BHLHE40	&1	&3	&3	&24699451	&CD4 T cells			&MoGene-1\_0-st\\
 GSE50933	&ID3		&2	&5	&5	&24244015	&Natural killer T cells	&Mouse430\_2\\
-GSE62999	&DUSP5	&1	&10	&10	&25398911	&Bone marrow	&Mouse430\_2\\
-GSE57917	&ONECUR1	&2	&3	&3	&25313862	&Retinas	&Mouse430\_2\\
+GSE62999	&DUSP5	&1	&10	&10	&25398911	&Bone marrow			&Mouse430\_2\\
+GSE57917    &ONECUR1	&2	&3	&3	&25313862	&Retinas				&Mouse430\_2\\
 \hline
  \end{longtable}
 \end{landscape}
