@@ -1,0 +1,123 @@
+%\section{Limitations, unsolved challenges}
+
+\section{Unsolved challenges and/or limitations of existing methods}
+\label{chap:ExisingMethodsLimitation}
+
+In this section, we will discuss the unsolved challenges in the field in general, as well as limitations of existing methods.
+
+\subsection{Pathway analysis}
+
+Because of the importance of pathway analysis, hundreds of pathway analysis methods have been proposed thus far~\cite{DraghiciOntologicalToolsReview:2005,Khatri:2002,mitrea2013methods}.
+Hence, review papers are important and crucial because they compare and benchmark these proposed methods and provide guidance for researchers to choose the most suitable method for their analyses.
+Although several review papers have attempted to guide users in determining how various methods related to each other, their validation and comparison approaches have some limitations.
+
+One of the main challenges in assessing pathway analysis methods is that it is difficult to assess the correctness of whatever comes out from the pathway analysis. Many times, papers describing new methods validate them on only 2-3 data sets followed by a human interpretation of the results.
+However, this approach has several problems. First, it is biased and not objective. Living organisms are very complex systems, and almost any  analysis result will be supported by some references. Without a deep knowledge of the phenomena involved in the given phenotype, it is impossible to judge objectively whether such connections are really meaningful or not. Second, it is not scientifically sound. A scientific approach should formulate some hypotheses in advance, i.e. what a successful outcome of the pathway analysis should look like. Interpreting and justifying the results obtained from an experiment by searching the supporting literature as evidence are not scientifically sound.
+
+Some reviews provided a comprehensive overview of the methods but did not evaluate the performances using benchmark data sets~\cite{mitrea2013methods, Khatri:2012}. 
+%Mietrea \textit{et al.} ~\cite{mitrea2013methods},
+%
+%~\cite{Khatri:2012}.
+Very rarely, some comparisons are done using a few data sets~\cite{bayerlova2015comparative}, most often simulations. 
+Very few authors have attempted to compare the actual performance of such methods. 
+In \cite{bayerlova2015comparative} and \cite{ihnatova2018critical}, the authors assessed the methods based primarily on their performances on simulated data sets.
+The problem with this approach is that any simulated data set is constructed based on a set of assumptions, few of which apply to the real data. 
+The resulting comparison not only is difficult to reproduce, but also has some inherent bias.
+A very interesting article by Reimand \textit{et al.} provided an astonishing perspective on the effect of outdated annotations on pathway enrichment analysis~\cite{Wadi:2016} but comparing the capabilities of the various methods was outside its scope. 
+
+
+
+A more objective and reproducible way of validating and comparing methods is using some data sets related to a disease or a condition that has a pathway describing the known mechanisms involved in that particular condition.
+Such pathway can be considered the ``target pathway" in any studies involving that condition.
+The methods studied will be evaluated based on their ability to identify target pathways. 
+An ideal method would identify the target pathway as significantly impacted and rank it highly among other pathways.
+
+Tarca \textit{et al.} \cite{tarca2013comparison} was arguably the first article that compared 16 different  methods using 42 data sets related to 17 diseases using this type of assessment. However, this comparison is limited to gene set methods (non-TB). 
+Although this validation approach is far more superior than using simulated data sets and is widely accepted, it has a weakness. For each data set, this approach only focuses on one true positive, the target pathway related to the particular phenotype studied. The problem is that we do not know whether there are other truly impacted pathways. 
+In order to address this problem, one should use real data sets in which the truly impacted pathways are actually known. 
+
+
+The best such data involve using knock-out experiments, where the phenotype is caused by knocking down a particular gene (KO gene). Pathways containing the KO gene are true positives because they contain the true cause of the phenotype and are genuinely implicated in the changes associated to the phenotype. Any pathway that does not contain the KO gene is a true negative because it does not contain the true cause of the phenomenon, but only changes triggered by the true cause. Because both true positives and true negatives are known, in this setup one can calculate the classical  accuracy, sensitivity, specificity, and  AUC. To the best of our knowledge, no paper has previously performed such an extensive assessment of the existing methods using KO data sets.
+
+Another significant limitation of these review papers attempting to benchmark pathway analysis methods is that they do not take into account the performance of these methods under the null hypothesis, which is the main cause of type I and type II errors in pathway analysis results. 
+Although existing pathway analysis methods work under the assumption that the p-values are uniformly distributed under the null hypothesis (i.e. the distributions of the p-values generated by the pathway analysis methods are uniform), Nguyen \textit{et al.} ~\cite{nguyen2017DANUBE, nguyen2018network} showed that this assumption does not hold true for some widely used pathway analysis methods. 
+Therefore, these pathway analysis methods will exhibit a systematic bias in identifying impacted pathways.
+As a result, the list of significant pathways provided by these  analysis methods often include pathways which are not significantly impacted (false positives), as well as fail to include pathways that are truly impacted (false negatives).
+None of the existing review papers discusses this major problem.
+
+\subsection{Drug repurposing and causal analysis}
+
+Although this area is promising and has been extensively researched in the past decade, the existing approaches in the field are limited in either one of the following ways.
+
+The existing methods depend significantly on the quality of the curated chemical-gene expression association database. 
+No algorithm would be able to identify the true CDT if no association between this CDT and the DE genes (or any gene) are annotated in the database used.
+Yet, the annotation of the drug-gene association database is the most challenging problem in the field. 
+At any given time, these databases are incomplete, probably partially incorrect, and will evolve as the technology advances and more knowledge is gathered. 
+
+Another issue with the annotations is that any association can be recorded in the database in two different ways which will also affect the testing hypotheses.
+For example, let us consider a chemical C that increases  the   expression level of a gene G. This can be captured as either ``C increases G'' or, alternatively as ``C deficiency decreases G'' in the knowledge base. 
+
+Moreover, all CDTs are not equally well studied. CDTs that are more popular and/or widely researched would have more associations with targeted genes discovered than the less popular ones.
+This issue, in turn, could create a potential bias against less popular CDTs which would be less likely to be correctly identified.
+The same problem is observed in the pathway analysis field when the pathway analysis methods, including ORA, KS, Wilcoxon, and GSEA, tend to be biased toward small-size pathways~\cite{nguyen2019identifying}.
+
+In some cases, the knowledge bases are commercialized and are not open to public for data modification, e.g. IPA is a commercial product and analyzes its own knowledge base. In essence, it prevents researchers to update the database with their new discover in drug-gene associations, which could be a new associations or a correction of a previous findings. 
+
+
+Other popular methods utilize the databases from previous projects such as cMap~\cite{lamb2007connectivity, lamb2006connectivity} and LINCS (http://www.lincscloud.org/l1000/). Although they are open for public, the results might not be regularly updated. Also, researchers are limited from integrating their own input and/or modifying these knowledge bases. 
+Moreover, cMap and LINCS and similar approaches, such as sscMap~\cite{zhang2009sscmap} and SAM \cite{sirota2011discovery}, create reference databases from gene expression profiles. These databases often contain the list of gene expressions of diseases (derived from contrasting the studied disease  samples and control samples) and list of gene expressions of drugs (obtained by comparing gene expression samples exposed to the studied drug versus control samples). These list of gene expressions of diseases or drugs are also referred as disease signature or drug signature in some literatures. The drug repositioning applications would use a similarity measurement method to compare two signatures, either drug signature vs disease signature (if they are opposite signatures, the drug is a potential treatment to treat the disease), or drug signature vs drug signature (if they are similar, these drugs can potentially be used to treat a same disease). Although this approach is very popular, it has some drawbacks. 
+
+Firstly, drug or disease signatures are often obtained by using just one data set. However, the authors did not take into consideration of the batch effect and different experiment conditions. In fact, the list of DE genes from different experiments of a same conditions often show poor agreement with each other \cite{ein2005outcome}. Moreover, same drug would have different effects on various subject at different time of intake in different conditions. The gene signatures might be totally different in these situations.
+Choosing only one data set per condition or drug for creating the signature would result an unreliable result.
+Secondly, they often contain very limited number of drugs. For example, Butte \textit{et al.} included in the SAM dataabse only 164 drugs in the study. This small coverage of drugs in these databases would limit their applicability.
+Thirdly,  this approach would be computationally intensive and challenging since one would have to compare the gene signature of given drugs with all genes signatures available in the database. In reality, the authors often perform all the  possible comparison between all drug signatures versus all gene signatures in the database. Hence, with $n$ drug signatures and $m$ disease signature avaible, one must perform $\binom 2n$ comparisons of drug-vs-drug signatures, and $n \times m$ comparisons of drug-vs-disease signatures.  Therefore, the complexity of the algorithm is $\mathcal{O}(n^2)$.
+
+Some methods hypothesize that drugs with similar chemicals structures would be a potential for drug repurposing~\cite{bleakley2009supervised, li2012new, tan2014drug}. However, this assumption does not always hold true. Let us consider an example of codeine, morphine vs heroin, which have a very similar structure but totally different strength and applications. Codeine is a mild opioid used for pain relief and cough suppression. Morphine is a stronger potent opioid used for more severe pain. Heroin, a substance derived from morphine, is more lipid-soluble allowing it to cross the blood-brain barrier more rapidly, leading to a quicker and more intense euphoria. Heroin has a high potential for addiction and hence is banned in most countries. 
+The supervised machine learning models that predict new drug target interactions also make similar assumption which might not be true in reality~\cite{zheng2015large, susnow2003use, shen2003development, duvenaud2015convolutional, salt1992use}. These models are often trained from drug target interaction database. The major issue is that the similar genomic space, or similar chemical structure might have a total different characteristics and would result different effects on the interaction.
+Hence, the potential drugs  proposed by these methods  must be verified through experiments, which is a time consuming and cost inefficient process. This verification is in turn equivalent to phase I of drug approval process and defeats the purpose of drug repurposing.
+
+The approaches analyzing genomic data do not make such assumption about the similarity of the chemical structure of the drugs nor the amino acid sequences. The gene expression are more or less reflecting the actual effect of the drugs or the condition under study.
+Although somewhat successful, most of the publications have been focusing on a specific disease, e.g. gastric cancer \cite{claerhout2011gene}, hepatocellular carcinoma \cite{chen2011gene},  inflammatory bowel disease~\cite{dudley2011computational}, etc. , than generalizing the method for any given condition.
+
+Some methods create a network of human diseases with potential drugs based on their effects on gene expression profiles, such as~\cite{hu2009human, iorio2010identification, iorio2010discovery}. There are two main issues with these approaches: (i) given the constructed network, it is difficult for users to understand the reasons for a connection between a disease and the drugs in the graph, and (ii) given a disease, the linked drugs are not sorted and one would not know which one has more potential compared to the others. With the limited explanatory power and unsorted list of potential drugs, researchers must verify all of the linked drugs of a studied disease for the best result. 
+
+%Some causal approaches focus  on identifying upstream genes/proteins instead of external causes such as CDTs. 
+Some classical methods do not take into consideration the direction of changes in DE genes, i.e., whether a DE gene is up- or down-regulated, as well as the association between the CDT and the downstream genes, i.e. inhibition or activation.  
+Moreover, some of them only focus on some specific conditions. Hence, the methods are work well with the studied condition but might not work for other conditions.
+Some causal approaches focus  on identifying upstream genes/proteins instead of external causes such as CDTs. 
+
+Some methods, such as Fisher's exact test, may not yield reliable when the number of ``interesting'' genes (i.e. DE genes) is small, which is often the case in gene expression data sets. 
+
+%Among existing causal analysis methods, IPA is a commercial tool and is arguably considered the state-of-the-art. 
+%Although IPA derives these two scores for each CDT, namely ``overlapped p value'' and ``z-score'', the result is solely determined by the z-score: the regulator is determined as ``activated''  or ``inhibited'' if its z-score $\geq 2$ or $\leq -2$, respectively~\cite{kramer2013causal}. In other words, the statistic calculated from the data will determine the outcome, instead of formulating the hypothesis testing beforehand.
+%Another drawback of IPA is that it does not derive the significant score, e.g. z-score, for all CDT in the knowledge base.
+To our knowledge, none of the existing methods can be applied in both drug repositioning and causal analysis. 
+
+
+%Instead of DE genes versus total number of  genes, PURE considers the number of interactions supporting (or not)  the testing hypothesis. Because the ratio of edges supporting H1 out of all edges is much higher than the ratio of DE genes out of all available genes in the data sets, PURE is expected produce a significantly more accurate result in more situations.
+
+
+%
+%However, the results shown here, demonstrate the performance of the proposed approach 
+%%will yield better results 
+%compared to the existing approaches when using currently available resources. 
+%The expectation is that an improvement of the quality of the underlying database will improve the results of all methods, rather than favor a particular one. 
+
+
+
+
+%In the experiment in which the chemical C is lacking (data set 14 in Table~\ref{Datasets}), instead of testing the hypothesis 2 that tests whether the chemical C's level is lower than normal, one must test the hypothesis 1 with the true CDT being ``chemical C deficiency''.
+
+
+
+
+
+%
+%
+%
+%
+%Among all the benchmarking methods included in this study, only IPA takes the sign of CDTs - genes associations under consideration and can predict whether a significant CDTs is activated or inhibited (corresponding to H1 and H2), as our proposed method does, so a more detailed theoretical comparison is warranted.
+%Although IPA derives these two scores  described above for each CDT, the result is solely determined by the z-score: the regulator is determined as ``activated''  or ``inhibited'' if its z-score $\geq 2$ or $\leq -2$, respectively~\cite{kramer2013causal}. In other words, the statistic calculated from the data will determine the outcome. In contrast, our proposed method uses a more classical approach in which the hypotheses are formulated before hand, independently of the data as in a canonical hypothesis testing. Our proposed method  considers each hypothesis separately, and calculates a p-value that will indicate whether the null hypothesis can be rejected. 
+%For our proposed method, the null hypothesis is that ``CDT X has not had an impact on the measured gene expression changes" whereas the first research hypothesis is that ``CTD X was present and had an impact on the gene expression changes'' and the second, independent, research hypothesis is that ``CTD X was lacking and its absence had an impact on the gene expression changes''. 
+%The testing done in the proposed approach is more rigorous in terms of statistical testing, but such approach can potentially reject the null hypothesis for both research hypotheses which would be difficult to interpret from a biological perspective. In contrast, the approach used by IPA avoids such potentially ambiguous situations because the z-score can be either positive or negative but not both. The most important difference stemming from these two approaches is that our proposed method  can identify CDTs that can reverse the observed genes expression changes because it considers both sets of statistical hypothesis. This means that our proposed method can be used for drug repurposing - situations in which one is given a   gene expression profile associated with a given disease and the task is to identify a drug that could revert some of the changes. In contrast, IPA only considers the CDTs that are present and focuses whether they are ``activated'' or ``inhibited''. 
+%Another  difference worth mentioning between IPA and our proposed method  is that while our proposed method  considers and derives a p value corresponding to the hypothesis testing for every CDT in the knowledge base, IPA does not derive z-score for all CDT in the knowledge base.
