@@ -201,8 +201,8 @@ Similarly, the median p value obtained by using TB methods are also significantl
 
 Although the above assessment is better than the human interpretation approach or using simulated data sets, it still has some limitations: it focuses solely on one true positive, the target pathway. We do not know what other pathways are also truly impacted and therefore cannot evaluate other criteria such as the accuracy, specificity, sensitivity, and the area under a Receiver Operating Characteristic (ROC) curve (AUC) of a method. Here, we use knock-out data sets that involve using knock-out experiments (KO), where the source of the perturbation is known, i.e. the KO gene.
 
-\red{We use the following inclusion criteria to ensure the quality of KO datasets: (1) The number of samples in a dataset must be at least 4 (at least 2 samples for each genotype), (2) the KO samples must have one and only one KO gene, (3) the KO gene must be in at least one of the pathways in this study, (4) the KO must be differentially expressed, and (5) the expression level of normal samples must be at least three time higher than the expression level of KO samples, i.e the fold-change must be negative and $logFC <= -3$).}
-\red{We found 13 datasets from GEO satisfied those criteria.} Table \ref{table:MouseDatasets} provides detailed information regarding the \red{13} benchmark KO data sets used. This information includes:  the GEO ID, symbol of KO gene, number of truly impacted pathways, number of normal samples, number of phenotype samples, Pubmed ID, tissue from which the samples were taken, and the platform used for the experiment.
+We use the following inclusion criteria to ensure the quality of KO datasets: (1) The number of samples in a dataset must be at least 4 (at least 2 samples for each genotype), (2) the KO samples must have one and only one KO gene, (3) the KO gene must be in at least one of the pathways in this study, (4) the KO must be differentially expressed, and (5) the expression level of normal samples must be at least three time higher than the expression level of KO samples, i.e the fold-change must be negative and $logFC <= -3$).
+We found 13 datasets from GEO satisfied those criteria. Table \ref{table:MouseDatasets} provides detailed information regarding the 13 benchmark KO data sets used. This information includes:  the GEO ID, symbol of KO gene, number of truly impacted pathways, number of normal samples, number of phenotype samples, Pubmed ID, tissue from which the samples were taken, and the platform used for the experiment.
 
 
 \begin{landscape}
@@ -211,7 +211,7 @@ Although the above assessment is better than the human interpretation approach o
 \centering
 \footnotesize
 \begin{longtable}{@{}llcccl@{}}
-\caption{\red{Thirteen} knockout benchmark data sets used to compare 10 methods in this paper.\label{table:MouseDatasets}}\\
+\caption{Thirteen knockout benchmark data sets used to compare 10 methods in this paper.\label{table:MouseDatasets}}\\
 \hline
  \textbf{GEO ID}& \textbf{KO gene} & \textbf{Gene ID}& \textbf{\#Nornal} & \textbf{\#Condition} & \textbf{Known disease association}  \\
  \hline
@@ -245,7 +245,7 @@ We consider pathways containing the KO gene as positives and the others as negat
 Similarly, a true negative (TN) is a negative which is correctly identified as insignificant.
 A false positive (FP) is a pathway that does not contain the KO gene but is reported as significant. A false negative (FN) is a pathway that contains the KO gene but is not reported as significant.
 
-Subsequently, we calculate the accuracy, sensitivity, specificity, and AUC of methods studied using \red{13} KO data sets.
+Subsequently, we calculate the accuracy, sensitivity, specificity, and AUC of methods studied using 13 KO data sets.
 
 \textit{Statistical measures} 
 
@@ -270,14 +270,14 @@ Since CePaGSA, CePaORA, and PathNet do not support mouse pathways, they are left
 The comparisons of accuracy, sensitivity, and specificity are illustrated in Fig. \ref{fig:AccSenSpe}.
 FE and PADOG have the highest median value of accuracy, 0.92 and 0.91 respectively. PADOG has the highest median value of specificity (0.93), followed by FE (0.92). 
 All methods show rather low sensitivity. 
-GSA is the best one with the median value of sensitivity of \red{0.8}. 
+GSA is the best one with the median value of sensitivity of 0.8. 
 
 \begin{figure}
 \centering
   \captionsetup{width=0.7\linewidth}
 
 	\includegraphics[width=1\linewidth]{../Figures/Acc_Sens_Spec_v3}
-	\caption{\textbf{The comparison of 10 methods using KO data sets in term of accuracy (a), sensitivity (b), and specificity (c).} In term of accuracy, FE (0.92) has the highest median value followed by PADOG (0.91). PADOG has the highest median value of specificity (0.93). The best method in term of sensitivity is GSA which has the median value of sensitivity of \red{0.8} (Fig \label{fig:AccSenSpe}).}
+	\caption{\textbf{The comparison of 10 methods using KO data sets in term of accuracy (a), sensitivity (b), and specificity (c).} In term of accuracy, FE (0.92) has the highest median value followed by PADOG (0.91). PADOG has the highest median value of specificity (0.93). The best method in term of sensitivity is GSA which has the median value of sensitivity of 0.8 (Fig \label{fig:AccSenSpe}).}
 \end{figure}
 
 
