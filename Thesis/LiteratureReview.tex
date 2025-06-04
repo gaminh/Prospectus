@@ -1,0 +1,312 @@
+\section{Problem description and literature review}
+%\subsection{Existing methods in the fields}
+
+\input{Problem_Description}
+
+\subsection{Literature review}
+
+
+When presented with a gene expression profile, researchers typically begin by performing pathway analysis to identify the affected pathways and understand the mechanisms of the differentially expressed (DE) genes. In this section, we will review and discuss some of the most widely used approaches in pathway analysis, which are often categorized into two groups: ``non topology-based''  (non-TB) and ``tolology-based'' (TB) methods.
+
+Resources such as the Comparative Toxicogenomics Database, Connectivity Map (CMap) ~\cite{lamb2007connectivity, lamb2006connectivity}, or Library of Integrated Network-based Cellular Signatures (LINCS), capture collective existing knowledge about the genes that are affected by a multitude of  chemicals, toxicants or drugs. This type of knowledge can be used for many purposes which in turn can generally be categorized into two main directions: drug repositioning and causal analysis.
+
+
+
+\subsubsection{Pathway analysis}
+The current pathway analysis methods can be divided into two main categories. 
+The first category includes \textbf{``non topology-based'' methods} (non-TB methods), i.e. methods  that do not take advantage of prior knowledge regarding the positions and roles of the genes within the pathways, the directions and types of the signals transmitted from one gene to another, etc.  
+These are also known as gene set analysis methods. 
+
+Early methods in the non-TB category take a list of differentially expressed (DE) genes as input, and identify the pathways in which the DE genes are over- or under-represented.
+The significance of each pathway is measured by calculating the probability that the observed number of DE genes in a given pathway were simply observed by chance. 
+These approaches are known as \textbf{Over-Representation Analysis} (ORA)~\cite{khatri2005comparison, goeman2007analyzing}.
+Some widely used classical approaches from this group use Fisher's Exact test~\cite{Fisher:1951} and $\chi^2$-test ~\cite{Fisher:1993}. 
+
+\begin{itemize}
+\item \textbf{Fisher's Exact (FE) Test} is a statistical test that can be used to determine whether two  classes of results have a non-random association~\cite{Fisher:1951}.
+In the context of pathway analysis,  FE test calculates the probability that an association between the list of DE genes and the genes belonging to a given pathway occurs just by chance.
+The input of this test, a $2 \times 2$ \textit{confusion matrix}, is made of the following four numbers: (i) DE genes belonging to the pathway, (ii) DE genes not belonging to the pathway, (iii) non-DE genes belonging to the pathways, and (iv) non-DE genes not belonging to the pathway. 
+In R, FE test can be performed by using \texttt{fisher.test} function.
+\end{itemize}
+
+
+Here are some popular ORA-implemented tools:
+
+\begin{itemize}
+\item \textbf{Onto-Express}~\cite{Khatri:2002, DraghiciOE2:2003} first leverages various databases to map genes to biological categories, such as biochemical function, biological process, cellular role, cellular component, molecular function and chromosome location. It then derives statistical significant score for each profiles given a list of DE genes found in the studied condition. Subsequently, specific mechanisms of interactions can be constructed based on these relevant biological processes.
+
+\item \textbf{PathwayProcessor}~\cite{Grosu:2002} uses one-sided Fisher's Exact Test to derive the p value for each pathway. Moreover, the method also assign a sign (+/-) to the p value indicating whether the pathway is up- or down-regulated. The sign is determined by subtracting the mean relative expression of DE genes in the pathway from the mean of all DE not within the pathway. If there is no DE genes in the pathway, the sign would be assigned as +, which does not matter much as the p value for such pathway would be insignificant. PathwayProcessor includes visualization tools such as heatmaps, pathway diagrams, and network visualizations to help interpret and explore the results.
+
+\item \textbf{PathMAPA} \cite{Pan:2003} uses Fisher's Exact Test to calculate the score used for determining whether a studied pathway is affected. The scoring  involves aggregating individual gene scores (e.g., t-statistics or fold changes) within the pathway to derive a summary statistic for the pathway. The p value of the score is derived by comparing the obtained score with the distribution of the scores under the null hypothesis. 
+
+
+%\item Cytoscape~\cite{Shannon:2003} open source software 
+%
+%\item PathwayMiner
+%
+%\item ArrayXPath
+
+\item \textbf{GeneMAPP}~\cite{Dahlquist:2002} (Gene Microarray Pathway Profiler) allows users to create and edit pathway diagrams, map gene expression data onto these pathways, and identify significant changes in gene activity. GenMAPP facilitates the interpretation of large-scale gene expression data by highlighting the molecular interactions and processes affected, thus aiding in the understanding of biological responses and disease mechanisms.
+
+\item \textbf{GeneMerge}~\cite{Castillo-Davis:2002} is a web-based and standalone software that identifies statistically significant associations between genes and functional categories, such as Gene Ontology terms, pathways, or diseases. By performing enrichment analysis, GeneMerge helps researchers understand the biological significance of their gene lists, pinpointing the molecular functions, biological processes, and cellular components most relevant to the genes under study. After applying the hypergeometric test to derive rank scores for over-representation within the gene sets, GeneMerge apply a the Bonferroni correction for multiple comparisons.
+
+\item \textbf{FuncAssociate}~\cite{Berriz:2003} is a web-based tool that uses Fisher's Exact Test to determine whether a list of DE genes is over-represented in functional categories, such as Gene Ontology terms. FuncAssociate also lets the users compute the under-representation score. It adjusts the p value for multiple hypotheses by using the results of 1000 simulated null hypothesis queries.
+
+\item \textbf{FatiGO}~\cite{Al-Shahrour:2004} performs statistical tests to determine which categories are significantly enriched in the gene list of interest. FatiGO is specialized in working with GO terms. According the the authors, the deeper terms in the GO hierarchy are more precise but there are fewer genes annotated at these deeper GO levels. Genes of GO terms at deeper level will be aggregated to their corresponding parents. FatiGO asks user to specify the level of GO hierarchy used for analysis beforehand. They recommend using level 3, since FatiGO hypothesizes that GO level 3 constitutes a good compromise between the quality of the term and number of genes. Subsequently, a Fisher's Exact Test for the contingency table is apply to derive the p value of the parent GO term and the studied term. FatiGO uses three different methods to adjust the p values for multiple hypothesis tests: minP\cite{Westfall:1993}, false discovery rate by Benjamini and Hochberg\cite{Benjamini:1995}, and false discovery rate by Benjamini and Yekutieli~\cite{Benjamini:2001}.
+
+\item \textbf{GOstat}~\cite{Beissbarth:2004} uses the $\chi^2$-test to approximate the p value of the functional gene list, e.g. GO-term or a biological pathway, given a list of DE genes. If either the pre-defined gene list or the number of DE genes is below 5, the Fisher's Exact Test is applied instead. GOstat implemented two different ways to adjust the p value, namely the Holm correction~\cite{Holm:1979}, and the Benjamini and Hochberg correction~\cite{Benjamini:1995}.
+
+\item \textbf{GOToolBox}~\cite{Martin:2004} applies hypergeometric test to determines the significance of these terms, highlighting key biological processes, molecular functions, and cellular components associated with the genes. Additionally, GOToolBox offers various utilities for visualizing and exploring the results, aiding researchers in interpreting their data and uncovering underlying biological mechanisms.
+
+\item \textbf{GoMiner}~\cite{GoMiner, Zeeberg:2005} uses two-sided version of Fisher's Exact Test that informs a significant under- and over-representation of DE genes in the predefined gene list. Beside the quantitative and statistical output files, GoMiner provides two visualizations: a tree-like structure and a compact, dynamically interactive 'directed acyclic graph' (DAG). Each gene in the GoMiner tree classification is dynamically linked to the corresponding set of BioCarta and KEGG biological pathway maps.
+
+\item \textbf{WebGestalt}~\cite{zhang2005webgestalt, wang2013web} (WEB-based GEne SeT AnaLysis Toolkit) is a free web-application that has the functional categories covering various biological contexts including GO~\cite{Ashburner:2000}, KEGG \cite{kanehisa:2008}, Pathway Commons \cite{cerami2011pathway} and MSigDB~\cite{liberzon2011molecular}, network module, gene-phenotype asoociation, gene-disease association, gene-drug association, and chromosomal location. In total, it includes more than 78,000 functional categories.
+
+%\item etc.
+\end{itemize}
+
+The methods in this first generation rely on a pre-defined threshold, which is used to derive a list of DE genes. The significance of each pathway is then assessed based on the degree to which the pathway is enriched in such DE genes. A pathway that contains significantly more than expected DE genes will more likely to be truly related to the given condition.  
+This approach depends heavily on the criteria used to select the DE genes, including the statistical tests and thresholds used. 
+
+
+A second generation of methods was designed to eliminate this dependency on the gene selection  criteria by taking all gene expressions into consideration. 
+The hypothesis behind these methods is that small but coordinated changes in sets of functionally related genes may also be important, in addition to the genes that have large expression changes.
+These methods are also known as \textbf{Functional Class Scoring methods} (FCS) \cite{ackermann2009general}.
+Some of the popular of approaches in this group are:
+
+\begin{itemize}
+
+\item \textbf{Kolmogorov-Smirnov (KS) Test} compares two empirical distributions to determine whether they differ significantly~\cite{wilcoxon1945individual}.
+Similar to FE test, it is a non-parametric test that does not make any assumptions about the distributions of the given data sets.
+In the context of pathway analysis, the two empirical distributions are the scores of the DE genes inside (denoted as DE-hit) and outside (denoted as DE-miss) a pathway.
+The null hypothesis here is that there is no association between DE genes and the given pathway and therefore, there is no significant difference between the two empirical distributions of DE-hit and DE-miss.
+In R, \texttt{ks.test} function can be used where the inputs are the list of DE-hit, DE-miss, their fold-changes, and the list of pathway's genes.
+The output is p-values of the pathways.
+
+\item \textbf{GSEA} uses a KS-like statistic test and considers the entire list of genes rather than simply relying on the cut-off to select the list of DE genes~\cite{Subramanian:2005}. 
+GSEA method consists three important steps: (i) calculation of the enrichment score (ES) for each gene set (e.g. pathway), (ii) estimation of the statistical significance of the ES, and (iii) adjustment for multiple hypothesis testing.
+To derive the ES, it traverses down from the top of the sorted genes list.
+A running-sum statistic is increased upon encountering a gene inside the pathway and decreased upon encountering a gene outside the pathway. 
+ES is the maximum deviation from zero.
+Subsequently, a null distribution of the ES is created in the second step using an empirical phenotype-based permutation test.
+The significance of a pathway is assessed relative to this null distribution.
+In last step, normalized ES (NES) of each gene set (pathway) is calculated based on the size of the set.
+False discovery rate corresponding to each NES is also determined in this final step.
+
+\item  \textbf{Wilcoxon rank sum} (WRS) is a non-parametric statistical test generally used to determine whether or not there is a significant difference in the medians of two given populations~\cite{wilcoxon1945individual}.
+In the context of pathway analysis, WRS can be used to compare the ranks or p-values (derived from a statistical test, such as a \textit{t-test}) of the DE genes inside and outside a pathway.
+WRS is available in R via the function \texttt{wilcox.test}, which takes list of DE genes, their fold-changes, and a list of genes of a given pathway as input.
+WRS is employed differently by some pathway analysis tools such as SAFE~\cite{Barry:2005} and Camera ~\cite{wu2012camera}.
+
+
+\item \textbf{Catmap}~\cite{Breslin:2004} calculates a score for each category based on the ranks of its member genes. This score reflects the overall significance of the category's presence in the input gene list compared to a background distribution. To determine the statistical significance of the enrichment scores, Catmap employs permutation testing. This involves repeatedly shuffling the gene labels and recalculating the enrichment scores to create a null distribution. The actual enrichment scores are then compared to this null distribution to obtain p values, indicating the likelihood that the observed enrichment is due to random chance.
+
+\item \textbf{GlobalTest}~\cite{Goeman:2004} uses a generalized linear model (GLM) framework to evaluate the relationship between the gene set and the phenotype. The model can accommodate different types of outcomes, such as continuous, binary, or categorical variables. For each gene set, GlobalTest calculates a test statistic that measures the strength of the association between the combined expression of all genes in the set and the phenotype. This statistic is based on the likelihood ratio, comparing the fit of the model with the gene set to the fit of a null model without the gene set. To assess the significance of the association, GlobalTest employs permutation testing. This involves shuffling the phenotype labels and recalculating the test statistic for each permutation to create a null distribution. The observed test statistic is then compared to this null distribution to derive a p-value. GlobalTest applies methods to correct for multiple testing, such as the false discovery rate (FDR) or Bonferroni correction.
+
+\item \textbf{sigPathway}~\cite{Tian:2005} calculates a test statistic for each gene set that quantifies the strength of the association between the gene set and the experimental condition or phenotype. This involves comparing the distribution of gene expression values within the set to those in a reference or control condition. sigPathway also generate a null distribution of the test statistic under the null hypothesis of no association to derive the p value for the strength of the association obtained in the previous step. It uses FDR or Bonferroni to correct the p values for multiple testing.
+
+\item \textbf{SAFE}~\cite{Barry:2005} (for Significance Analysis of Function and Expression)  utilizes a two-stage approach to assess the significance of a gene category: a test statistic that quantifies the association between the gene set and the experimental condition or phenotype (local statistics); and then employs permutation testing to assess the significance of the test statistics. The second step involves randomly permuting the sample labels (e.g., treatment vs. control) multiple times and recalculating the test statistics for each permutation (global statistics).
+
+\item \textbf{GSA}~\cite{Efron:2007} calculates a score for each gene in the dataset, reflecting its association with the experimental condition or phenotype. This can be done using various statistical methods such as t-tests, fold changes, or correlation coefficients. For each gene set, GSA computes an overall test statistic that summarizes the collective behavior of the genes within the set. This involves aggregating the individual gene scores into a single summary statistic for the entire gene set. GSA evaluates the significance of the gene set scores using statistical tests. The method compares the observed scores against a null distribution to determine whether the observed changes in gene expression are statistically significant. Various test statistics can be used, such as mean, median, or maximum score within the gene set, depending on the specific implementation of GSA. It applies multiple testing correction methods, such as the false discovery rate (FDR) or Bonferroni correction for multiple testing (more details on GSA will be described later).
+
+\item \textbf{Category}~\cite{jiang2007extensions} proposed number of extensions to GSEA, including different approach to calculate the association between DE genes and phenotypes, the use of dimension reduction, and addressing issues when gene sets overlap. 
+
+\item \textbf{PADOG}~\cite{Tarca2012down} hypothesizes that genes that appears in fewer pathways are more important in the pathways they are annotated with than the common genes that appear in many pathways.  These overlapping genes are down-weighted to reduce their impact on the enrichment scores of multiple pathways. For each gene in the dataset, PADOG calculates a score reflecting its differential expression between experimental conditions, often using a t-statistic or other relevant metric. For each pathway, PADOG computes an enrichment score that aggregates the weighted gene scores. This score accounts for the down-weighted influence of overlapping genes. PADOG evaluates the significance of the enrichment scores for each pathway. This involves comparing the observed enrichment scores to a null distribution to assess whether the observed changes in gene expression are statistically significant. The PADOG R package is available at \cite{TarcaPADOG}.
+
+\item \textbf{PCOT2}~\cite{kong2006multivariate} focuses on identifying interactions or crosstalk between pathways. It considers pairs of pathways and assesses whether the gene expression patterns suggest interactions between them. The method examines the overlap and co-expression patterns of genes shared between pathway pairs, as well as the influence of these genes on the pathways' overall activity. For each pair of pathways, PCOT2 calculates a test statistic that quantifies the extent of crosstalk. This involves evaluating the correlation and mutual influence of gene expression changes between the pathways. The test statistic considers both the direct overlap of genes and the coordinated expression changes in the context of the pathways’ activities. To determine the significance of the observed crosstalk, PCOT2 employs statistical tests. It compares the calculated test statistics for pathway pairs to a null distribution representing no interaction. The method use FDR or Bonferroni to correct the p value for multiple testing.
+
+\item \textbf{FunCluster}~\cite{henegar2006clustering}  groups genes into clusters based on their expression patterns across different conditions or samples. This can be done using various clustering algorithms such as hierarchical clustering, k-means clustering, or other suitable methods.
+The goal is to identify sets of genes with similar expression profiles, which are likely to be co-regulated or involved in similar biological processes. Once the gene clusters are formed, FunCluster integrates functional annotation information to interpret the biological relevance of each cluster.
+For each cluster, the method assesses the enrichment of specific functional categories or pathways, determining whether the genes within the cluster share common biological functions, processes, or pathways. The method performs enrichment analysis to identify functional categories that are overrepresented in each gene cluster. This involves comparing the observed frequency of functional annotations in the cluster to their expected frequency in the background gene set.
+Statistical tests, such as Fisher's exact test or hypergeometric test, are used to calculate p-values for the enrichment of each functional category within the clusters. The p values are then adjusted for multiple testing using FDR or Bonferroni correction.
+
+\item \textbf{SAM-GS}~\cite{dinu2007improving} first standardizes p values and fold changes of measure genes based on a pooled standard deviation. For each gene set, the method then aggregates these standardized gene scores by summing the squared standardized statistics (SSS) to compute a summary statistic (SAMGS test statistic) that reflects the collective behavior of all genes within the set. The SAMGS test statistic represents the overall significance of the gene set based on the combined expression changes of its member genes. The significance of the summary statistic is derive by comparing it with the null distribution of the summary statistics under the null hypothesis.
+
+\end{itemize}
+
+ 
+
+%Besides ORA and FCS methods, classical statistical tests, such as Kolmogorov-Smirnov test \cite{massey1951kolmogorov} (KS test) and Wilcoxon Rank Sum test~\cite{wilcoxon1945individual} (WRS test), can also be applied in the context of pathway analysis (more details about KS test and WRS test will be described in the following paragraphs). 
+%The common characteristic of these methods is that they focus on the expression changes of the DE genes without considering their positions and functions in the pathways.
+%Therefore, they also belong to the non-TB category.
+
+In principle, considering the pathways as simple un-ordered and unstructured collection of genes -- as the non-TB methods do -- discards a substantial amount of information about the biological processes described by these pathways. In essence, all the dependencies and interactions between genes that are meant to capture and describe the biological phenomenon are completely ignored. 
+ \textbf{Topology-based (TB)} methods have been developed in an attempt to include all this additional information in the analysis.
+Besides the genes expression changes, these methods  also take into consideration in various ways the positions and roles of all genes on each pathway, as well as all known signals and interactions between genes. 
+
+Rahnenf{\"u}hrer \textit{et al.} proposed a method named \textbf{ScorePAGE} (Scoring Pathway Activity from Gene Expression) for scoring the co-regulation of metabolic pathways associated with experimental conditions based on gene expression profile~\cite{Rahnenfuhrer:2004}. 
+First, ScorePAGE normalizes all genes' expression of each samples to medium expression of 0.
+Given a metabolic pathway that consists of chemical reactions catalyzed by enzymes, one must select a method to map these enzymes to measured genes in the gene expression profile.
+In many cases, many of involved enzymes can be matched with more than one gene in a metabolic pathway.
+The authors described different methods for selecting best fitting genes for a specific enzyme in specific condition using heuristic or greedy algorithms.
+Once genes are mapped to the enzymes in the specific pathway, pair-wise similarity between each pair of genes in the pathway can be calculated using one of four proposed methods.
+ScorePAGE hypothesizes that a pathway is active in the given gene expression profile if it has substantial amount of pair-wise correlated genes.
+The score of a pathway is the average of all scores obtained from all the pairs of genes in the pathway.
+The significance of the score, i.e. p value, is derived by comparing the observed score with the distribution of the scores under the null hypothesis.
+The author made an observation that the similarity score of two genes calculated by the proposed methods would be not be impacted by their positions in the pathway.
+A pair of genes connected directly to each other in a pathway network would have the same similarity score with a pair of isolated genes with similar expression level.
+To improve the sensitivity of the method, the authors took the pathway topology into account by adding a weight for each similarity score of two genes based on their positions in the pathway topology. The longer distance between the genes the less impact their correlation has on the pathway's score, hence the weight is $1/d$ where $d$ is the distance between two genes in the pathway's network.
+They chose the cut-off of the maximum distance between two genes of 10, i.e. if the distance of two genes is greater than 10 or they are completely disconnected ($d = \infty$), their distance would be assigned to 10.
+This would guarantee that two highly correlated genes would still have some impact to the pathway's score even when they are at great distance or isolated from each other (otherwise, two isolated genes would always have the similarity score of 0). 
+ScorePAGE often includes graphical representations, such as heat maps or network diagrams, to visualize the pathways and their associated gene expression changes.
+
+%The Impact Analysis was the first such approach~\cite{draghici2007systems}. 
+Although ScorePAGE takes the topology of the pathway into consideration, it was designed to work with metabolic pathways and time series gene expression profiles.
+This was followed by a plethora of over 30 tools and methods designed for signaling pathways that fall in the topology-based category~\cite{mitrea2013methods} including: 
+
+\begin{itemize}
+\item \textbf{Impact analysis} was one of first methods to be able to incorporate the topological structure of the pathways in the analysis of signaling pathways was proposed in~\cite{draghici2007systems}. %This is widely known as \textit{impact analysis} and often considered to be the state-of-the-art method in TB pathway analysis.
+\textit{Impact analysis} methods calculate the impact of a pathway by combining two types of evidence.
+The first type of evidence captures the over-representation of DE genes in a given pathway.  The second type captures several other important biological factors such as the position and magnitude of expression change for all the DE genes, the interactions between genes as described in the terms of the pathway, and the type of interactions. In essence, the measured fold changes of all DE genes are propagated as signals following the topology of the pathway in order to calculate a pathway level perturbation. 
+
+The first implementation of \textit{impact analysis} was  Pathway-Express (PE)~\cite{draghici2007systems}.
+Currently, the impact analysis and several follow-up improvements~\cite{voichita2012incorporating, ansari2017approach} are available in two R packages in Bioconductor~\cite{Yang:2002c}: \textbf{SPIA}~\cite{SPIAversion2.14.0} and \textbf{ROntoTools}~\cite{RontoToolsVersion1.2.0}.
+
+\item \textbf{Pathway-Express} \cite{draghici2007systems, khatri:2007a} calculate an Impact Factor (IF) by taking both number of DE genes and biologically meaningful changes on a given pathway into consideration: The first term indicates the over-representation of the list of DE genes in the pathway. The second term is the perturbation factors for all genes in the given pathways, considering the positions and the interaction types of the DE genes in the pathway topology. Connected DE genes in a pathway topology would have a higher impact than separated DE genes in the graph. In fact, if there is no perturbations directly upstream of a DE gene, its second term (perturbation factor) would be zero. The p value is then defined as $p = (IF + 1).e^{-IF}$.
+
+\item \textbf{SPIA} \cite{tarca2009novel} takes two types of evidences: (i) Over-representation Analysis (ORA) evaluates whether the differentially expressed genes are over-represented in a given pathway compared to what would be expected by chance; and (ii) Perturbation Analysis assesses the overall perturbation of the pathway by considering the magnitude and direction of gene expression changes and their positions and roles within the pathway. This combination accounts for both the enrichment of differentially expressed genes in the pathway and the downstream effects of their changes on the pathway’s function. The null distribution of impact scores is used to assess the significance of the observed impact. The method uses FDR to correct the p value for multiple testing.
+
+\item \textbf{NetGSA} \cite{Shojaie:2009} employs a statistical model that incorporates the network structure into the analysis. This model assesses the differential expression of gene sets while accounting for the dependencies induced by the network. NetGSA estimates the effects of individual genes and their interactions within the network context. It uses these estimates to infer the significance of the gene sets. By integrating network information, NetGSA can capture complex biological relationships and interactions that are missed by traditional gene set analysis methods. 
+NetGSA requires that the pathways be represented as directed acyclic graphs. NetGSA would add a  latent variables affecting the nodes in the cycle, if a pathway contains cycles.
+
+\item \textbf{TopoGSA}~\cite{Glaab:2010a} is a web-application that visualizes and compares of network topological properties of a given set of genes or proteins mapped onto interaction networks. After the list of genes or proteins are submitted to the website, the application will map them onto an interaction network. It would then compute these following properties of the network: the degree of node, which is the average number of interactions incident to this node; the local clustering coefficient, which measures the likelihood that a node's neighbors are interconnected; shortest path length for two nodes $v_i$ and $v_j$; node betweenness that represents the number of shortest path of two nodes going through a specified node $v$; and the eigenvector centrality that shows the importance of network nodes. It does not provide direct biological explanation of the given genes or protein list, but it does compare the properties of the genes/proteins list of interest with predefined list of genes such as pathways in KEGG, BioCarta, GO terms, etc.
+
+\item \textbf{TopologyGSA}~\cite{Massa:2010} introduced a topology-based pathway analysis using graphical models that incorporates the dependence structure among genes as indicated by the pathway topology. The analysis is intended for comprehensive monitoring of pathway changes across various experimental conditions. In different scenarios, both the gene expression within a pathway and the strength of their interactions may vary. 
+
+\item \textbf{DEGraph}~\cite{Jacob:2010} proposed multivariate two-sample tests of means where the location shift between two populations, e.g. the gene expression between two patient populations, is hypothesized to be related to a known graph structure, e.g. signaling pathways, biological processes. The authors proved that taking the knowledge about the graph structure would yield more powerful results. They illustrated the method in context of gene expression profiles and KEGG pathways.
+
+\item \textbf{PWEA}~\cite{Hung:2010}, as other topology-based method requires three inputs: gene expression profiles between two phenotypes, the list of gene sets (e.g. KEGG pathways), and their topology. They defined a ``topological influence factor'' (TIF) for each gene in the pathway, which is defined as the average of the mutual influence of this particular gene with all other reachable genes in the pathway. Two genes that are closes to each other would have greater influence than those that have greater distance. They also compute the TIF for genes not in the pathway by using the central limit theorem, since a general topology for them is not available. The weighted Kolmogorov-Smirnov test is used to derive the p value for the pathway using the ranked list of genes based on their computed TIF described above and t-test of expression level between two group of phenotypes. PWEA uses FDR to correct the p values for multiple comparison after the p values of all pathways are computed.
+
+
+\item \textbf{PathOlogist}~\cite{Greenblum:2011} is a software implemented in MatLab  and uses the PID (Pathway Interaction Database) ~\cite{Schaefer:2009qf} as pathway database source.
+%Raw gene expression profile is then summarized into probesets and normalized using a technique called ``robust-multichip averaging'' (RMA). The software then computes the probability of a sample being in ``up'' (highly expressive) or ``down'' (minimally expressive) state.
+Given a sample's gene expression, the software computes two metrics, namely ``activity'' and ``consistency'' for each pathway in the database. 
+The software computes these metrics at interaction level, then assigns the average score of all interactions within a pathway to the final pathway score.
+Activity score refers the interaction's potential to occur, i.e. the gene expression is proportional with the interaction's regulation, whereas the consistency score compares this potential with actual output molecules' presence.
+Next, users can choose one of four types of analysis to perform: binary classification, linear correlation, survival, and gene hit targeting. 
+In binary classification, for each pathway, the activity and consistence scores of two group of samples, e.g. condition vs control, drug A vs drug B, are compared using two sample ranksum test. A significant pathway would have scores in one group significantly higher than those of other group. 
+Linear correlation is performed for time series gene expression profile where samples are taken from different time point after the baseline. For each pathway, a Pearson's correlation coefficient is used to measure the linear relationship between the set of pathway scores and samples data. The software uses a Student's t-test to derive the p value for each pathway. 
+Survival analysis use Kaplan-Meier algorithm and logrank test to identify if there is a significant difference between the survival curves of two groups, that are constructed using \textit{k-means} applied on the samples' set of scores.
+The gene hit targeting analysis identifies pathways in which the molecules are affected by some alterations.
+PathOlogist also provides some visualization tools. A heatmap of these two features across all samples helps illustrating and identifying subgroups within the data. Network graphic show the detailed structure and behavior of pathway according to the sample selected.
+
+\item \textbf{GGEA}~\cite{geistlinger2011sets}, Gene Graph Enrichment Analysis, is a topology-based pathway analysis that uses a prior knowledge from directed gene regulatory networks (GRN). It consists of two main steps: construction of induced gene regulatory networks and verification of consistency of regulatory interactions.
+To create the induced gene regulatory networks, GGEA maps predefined gene sets, e.g. pathways, onto the GRN. The induced gene regulatory networks would be a subset of GRN including genes of the gene set and corresponding interactions. 
+In the second step, GGEA computes the agreement of the measured gene expression of the genes in each interaction with the type of their interaction in the induced gene regulatory networks.
+The method sums up all the edge consistencies of the induced network to derive a score. It will then normalize and calculate the significance of the score, i.e. p value.
+
+\item \textbf{CePaGSA} and \textbf{CePaORA} consider each pathway as a network where each node can contain one or many genes or proteins~\cite{gu2012centrality, gu2013cepa}.
+CePaORA only takes the expression changes of the DE genes into account whereas CePaGSA considers the entire list of genes.
+Both methods consider the whole node as DE if one of the genes residing in the node is DE.
+Node weights are calculated based on different centrality measurements such as in-degree, out-degree, betweenness, in-largest reach, out-largest reach, and equal weight condition.
+The pathway score is calculated as a summation of the weights of differentially affected nodes in the pathways.
+Subsequently, the significance of the pathway (p-values) is measured based on the null distribution of the pathway score, which is constructed by permutation the DE genes on a pathway.
+As a result, for each pathway there are 6 different p-values derived from the 6 different measurements mentioned above.
+%Since there is no indication from the original authors about which centrality measurement provides the most accurate result, in this manuscript we choose the lowest p-values of a pathway as its final p-value.
+
+\item \textbf{PathNet} relies on two types of evidence in the gene level: direct evidence and indirect evidence~\cite{Dutta:2012}.
+Direct evidence of a gene corresponds to the p-value obtained from a statistical test such as \textit{t-test} when comparing two given phenotypes.
+Indirect evidence of a gene is calculated from the direct evidence of its neighbor genes in a so-called \textit{pooled pathway}. 
+The pooled pathway is constructed by combining all the pathways in a given pathway database.
+The PathNet version used in this manuscript incorporates 130 KEGG pathways that were embedded in the software.
+P-values obtained from these two types of evidence are then combined using Fisher's method~\cite{fisher1925statistical} to derive a combined evidence for each gene.
+Finally, the pathway level p-value is computed using a hypergeometric test.
+
+
+\end{itemize}
+
+Nguyen \textit{et al.} proposed BLMA~\cite{nguyen2017blma,nguyen2015novel}, a framework that improves the result in pathway meta-analysis. Meta-analysis is performed when researchers have to analyze many data sets ($m$ data sets) of the same condition, that might result different outputs because of various factors, such as batch effect, different lab conditions, or different population that samples are collected from.
+The core contribution of the publication is the proposal of add-CLT, a combination of additive method~\cite{edgington1972additive} (for small number of data sets, $m < 20$) and Central Limit Theorem (for large number of data sets, $m \geq 20$) to combine the p values of each pathway in $m$ studies.
+The framework consists two levels of meta-analysis. First, for each study, it divides the corresponding data set into $n$ smaller subsets. BLMA will perform a selected pathway analysis method on these subsets resulting $n$ p values for each pathway. It then derives a p value for each pathway by combining these $n$ p values using add-CLT. After calculating the p value for each study, BLMA again combines $m$ p values from $m$ studies using add-CLT.
+
+
+
+
+\subsubsection{Drug repositioning}
+
+The goal of drug repositioning is to identify new therapeutic applications for existing drugs. Since these drugs are already approved, they can skip the Phase I clinical trials in the drug approval pipeline, i.e. testing the safety of the drug. Therefore this approach is faster and more cost-efficient than the process of new drug discovery, which takes on average 15 years and more than one billion dollars for each drug \cite{chong2007new}. 
+
+In general, drug repositioning can be classified into three strategies \cite{jarada2020review}: (i) drug-based strategies, where the discovery process is initiated from existing knowledge about drugs, and (ii) disease-based strategies, where the discovery process is initiated from existing knowledge about diseases. %, and most recently (iii) machine learning and big data technology, such as data mining, deep learning, classification, etc.
+
+\textbf{Drug-based strategies}
+
+Most studies in this category share the hypothesis that if two drugs have similar profiles and modes of action (MoA), and drug one of them is used to treat disease D, then the other drug can be considered a strong candidate for treating disease D. The drug-related data such as chemical, molecular, biomedical, pharmaceutical, and genomic information, are often use as the foundation for predicting therapeutic potentials and identifying novel indications for existing drugs. Two specific domains are extensively research in this categories are chemical structure and molecule information; and genomic data.
+
+\textit{\textbf{Chemical structure and molecule information}}
+
+Methods using chemical structure and molecule information usually compare the similarities of chemical structure in various way, such as two-dimensional and three-dimensional topological fingerprints~\cite{rognan2007chemogenomic, pihan2012drug3d, novick2013sweetlead}.
+
+Swamidass evaluated the chemical similarity and bioactivity profiles of compounds to identify drugs with potential new targets or therapeutic effects~\cite{swamidass2011mining}. 
+
+Keiser \textit{et  al.}  proposed different computational and experimental methods used to predict new drug-target interactions, one of them compares the chemical structure of known drugs to identify similar compounds that might interact with new targets~\cite{keiser2009predicting}.  Not only the method revealed thousands of new associations that are later verified through experiments, it can also explain some of the side effects of existing drugs.
+
+Yamanishi \textit{et  al.} integrates various types of data: (i) chemical space which is the chemical structure similarity space of possible chemical compounds; and (ii) genomic space which indicates the amino acid sequence similarity space of possible proteins, to infer unknown drug-target interactions~\cite{bleakley2009supervised}. The authors use a supervised learning method that used  drug–target interactions available from many public databases to build a model that learn the ``gold standard''. The model is then applied to compounds and proteins to infer their interactions. The model’s performance is evaluated using cross-validation techniques to ensure robustness and generalizability. Metrics such as precision, recall, and area under the ROC curve (AUC) are used to assess the accuracy of predictions. Predicted interactions are further validated using external datasets or experimental data to confirm their biological relevance and practical applicability.
+A similar approach was proposed by Bleakley \textit{et al.} where the authors proposed a supervised learning method to predict unknown drug–target interactions. In this work, they used bipartite local models to first predict target proteins of a given drug, then try to pin point drugs targeting those proteins.
+The technique that combines chemical structure information, drug-gene interactions and bipartite graph model was also used by Li and Lu ~\cite{li2012new} to calculate drug pairwise similarity.
+
+Zheng \textit{et al.} proposed a method called ``weighted ensemble similarity'' (WES) that identifies drug targets based on a large-scared scanning in the drug-target relationship database, rather than comparing the similarity between two compounds~\cite{zheng2015large}.  It constructs various similarity matrices, assigns weights based on each measure’s predictive power, and combines them into composite matrices for drugs and targets. Matrix factorization or collaborative filtering techniques are then applied to these composite matrices to predict interactions. 
+
+Susnow \textit{et al.} developed a random forest model trained from a training set of 100 compounds with published inhibition constants to predict cytochrome P450 2D6 inhibition from 2D chemical structure~\cite{susnow2003use}.
+
+Tan \textit{et al.} integrated 3D drug chemical structure information with other information, such as drug–target interactions
+and gene semantic similarity information to derive a score reflecting the consensus response scores between each drug and all proteins in the database~\cite{tan2014drug}. They create a drug similarity network that contain 33 modules of drugs with similar MoA.
+
+Recently, Quantitative Structure-Property Relationship (QSPR), a method in computational chemistry and molecular modeling to predict the physical and chemical properties of molecules based on their chemical structure, has been extensively studied. This method can help predict the similarity of the drugs and could be applied to virtual compounds or
+existing libraries, allowing to fast and cost-effective elimination of poor candidates prior to synthesis. Shen \textit{et al.} applied k-Nearest Neighbor (kNN) to QSPR for drug repurposing application~\cite{shen2003development}. Tejera \textit{et al.} created a QSAR model based on a machine learning strategy, Graph Convolutional Networks~\cite{duvenaud2015convolutional}, using hundreds of inhibitor molecules of the main protease (M\textsuperscript{pro}) of the SARS-CoV coronavirus. The authors applied the QSAR model for screening of a large list of drugs from the DrugBank database to propose 20 candidates which were then evaluated in-silico against the M\textsuperscript{pro} of SARS-CoV-2 by using docking and molecular dynamics analyses~\cite{tejera2020drugs}.
+Salt \textit{et al.} discussed the use of artificial neural networks (ANN) in QSAR in further details~\cite{salt1992use}.
+
+
+
+
+\textit{\textbf{Genomic data}}
+
+The high-throughput genomic sequences provide the possibility for researchers to study and have a better understanding of drugs' and diseases' mode of actions. 
+The microarray gene expression profile is one of the most popular data sources that have been applied to study the complexity of the disease and drug mechanisms of actions. Unlike the traditional methods which measure small set of genes at a time, this technology can measure and capture the snapshot of thousands of genes (or the whole genome) at the same time under the same conditions~\cite{slonim2009getting}. 
+
+Most often the gene profiling of control samples and treated samples are compared to obtain a list of DE genes, also defined in some literatures as the summary compound's effect \cite{shaw2003transcriptional}. 
+There are two main approaches of computational and knowledge-based drug repositioning methods: these summary compound's effect are compared to a disease-associated DE genes which obtained by the contrast between healthy and disease samples' gene expression; or to other compound's effect~\cite{iorio2013transcriptional}. 
+
+The former approaches hypothesize that if the compound's effect are negatively correlated with the disease DE genes, e.g. if a gene is up-regulated by a drug's effect and down-regulated by a disease, that drug would be a good candidate to revert the phenotype's DE genes, and hence can potentially suppress the phenotype~\cite{sirota2011discovery, mcart2011identification}. Some examples of studies using this idea in drug repurposing: Claerhout \textit{et al.} proposed using vorinostat as a candidate treatment for gastric cancer~\cite{claerhout2011gene}; Chen \textit{et al.} successfully identified and verified chlorpromazine and trifluoperazine as the alternative for sorafenib to treat hepatocellular carcinoma~\cite{chen2011gene}; Dudley \textit{et al.} proposed topiramate which was approved for epilepsy as a alternative treatment for inflammatory bowel disease~\cite{dudley2011computational}. 
+
+Hu and Agarwal created a comprehensive network that links human diseases with potential therapeutic drugs based on their effects on gene expression profiles~\cite{hu2009human}.
+The authors use gene expression profiles from publicly available databases, including data on various diseases and the effects of numerous drugs on gene expression in different cell lines.
+The study employs computational methods to match disease-associated gene expression signatures with drug-induced gene expression profiles.
+By identifying drugs that can reverse or mimic the gene expression changes observed in diseases, the authors construct a disease-drug network.
+The network helps identify existing drugs that could potentially be repurposed for treating different diseases based on their genomic effects.
+
+The latter approaches work under an assumption that if two drugs evoke similar summary compound's effects, they could share a common mode of action~\cite{iorio2010identification, iorio2010discovery, wolpaw2011modulatory,  chiang2009systematic}. 
+
+Iorio \textit{et al.} proposed an automatic approach that predict similarities in drug effect and MoA by taking advantage of the similarity drug-induced gene expression profiles, across multiple cell lines and dosages~\cite{iorio2010identification, iorio2010discovery}.
+They build a “drug network” of 1,302 nodes (drugs) and 41,047 edges (indicating similarities between pair of drugs). This network will be clustered into smaller communities, in which member drugs would have similar MoA, or acting on the same pathway. New compounds can be integrated into the network and communities to predict their therapeutic and off-target effects.
+
+Wolpawa \textit{et al.} presented an approach to identify the mechanisms by which small molecules cause cell death~\cite{wolpaw2011modulatory}. The study employs a technique called modulatory profiling, which involves treating cells with small molecules and then measuring a broad range of cellular responses. The data collected includes gene expression profiles, protein modifications, and other cellular responses. By analyzing the collected data, the researchers identify patterns and pathways involved in small molecule-induced cell death. They use computational tools to map these responses to known cellular pathways and mechanisms.
+
+Chiang \textit{et al.} hypothesized that if two diseases share some similar therapies, then other drugs currently used for only one of the two might also be therapeutic for the other~\cite{chiang2009systematic}. They extracted data from DRUGDEX System (from Thomson MICROMEDEX) and performed a series of filtering steps to create a Drug–Disease Knowledge Base consisting a set of 726 diseases and more than 2,000 drugs.
+
+Many methods in both groups utilize Connectivity Map (cMap)~\cite{lamb2007connectivity, lamb2006connectivity} or The Library of Integrated Cellular Signatures (LINCS) as reference of signature of differential gene expressions of disease and drug responses. 
+
+cMap was designed to discover functional connections between drugs, genes, and diseases through the analysis of gene expression profiles. Developed by the Broad Institute, cMap leverages a vast collection of gene expression profiles generated by treating different human cell lines with various small molecules. These profiles capture the cellular response to each treatment, reflecting changes in gene expression patterns.
+In essence, it consists 564 gene expression profiles obtained by exposing five human cell lines (MCF7, PC3, SKMEL5, HL60, and ssMCF7) to 164 distinct small-molecule perturbagens, selected to represent a broad range of activities, and including U.S. Food and Drug Administration (FDA)–approved drugs and non-drug bioactive “tool” compounds~\cite{lamb2006connectivity}. 
+It utilizes pattern-matching algorithms to compare the query signature against its reference database, identifying small molecules that produce similar or opposite gene expression changes.
+cMap can be used in drug repurposing application in two ways: (i) by identifying existing drugs that produce gene expression changes opposite to those observed in a disease state, it suggests potential therapeutic candidates for repurposing; and (ii) by comparing two drug-induced gene expression signatures since two drugs having the similar gene expression signatures are expected to have similar treatment on the condition.
+
+LINCS, a project funded by NIH, has used L1000 technology, which is a technology developed by cMap team, to generate over one million gene expressions profiles. LINCS is basically a matrix of 22,268 rows represents genes and over millions of columns correspond to millions of perturbations induced by small molecules. It is available via the LINCS web based application (http://www.lincscloud.org/l1000/). The advent of cMap and LINCS has paved the way for systematic large-scale research in drug repositioning.  Peyvandipour \textit{et al.} used the combination of cMap and LINCS together with Kyoto Encyclopedia of Genes Genomics (KEGG) \cite{ogata1999kegg}, a signaling pathway repository, to create a so-called drug-desease-network~\cite{peyvandipour2018novel}. They later use the impact analysis ~\cite{draghici2007systems} to derive a score to each drug-disease pair, which is used for identifying candidate drugs.
+
+To overcome cMAP limitation, Huang \textit{et al.} constructed a drug-protein connectivity map (DMAP) that consists drug-to-protein effects and effect score~\cite{huang2015dmap}. DMAP have a total of 438,004 chemical-to-protein relationships of 289,571 chemicals and 5,196 proteins. It covers 24,121 PubChem Compound ID (CID), 14-fold increase of coverage compared to cMAP. 
+
+Beside mRNA sequencing data, microRNAs (miRNAs) have been extensively studied and show potential for identifying aggressive disease, such as cancer, for their roles in regulating different types of cell activities~\cite{ding2014micrornas, wen2014micrornas}. Many studies have shown that small molecules or drugs can regulate miRNA expression and discover the potential of this data type in drug repurposing.
+Jiang \textit{et al.} used CMap to identify the biological connections between small
+molecules and miRNAs in 23 different cancers data sources~\cite{jiang2012identification}. They construct a so called Small Molecule-MiRNA Network for each cancer. These networks are then divided into smaller modules, in which small molecules with similar chemical structures, MoA, or drug interactions are connected one miRNA; or miRNAs having similar target genes are connected with one small molecule. These modules can be used to suggest therapeutic potentials and new indications for existing drugs.
+Liu \textit{et al.} \cite{liu2013sm2mir} manually curated from nearly 2000 articles to create the so-called SM2miR database, that contains 2,925 relationships between 151 small molecules and 747 miRNAs in 17 species.
+
+In the past decade, genome-wide association studies (GWAS) have helped discovering variants, that are associated with particular disease or trait~\cite{visscher2012five, hebbring2014challenges}. Sanseau \textit{et al.} aims to demonstrate the potential of GWAS in drug repositioning application~\cite{sanseau2012use}. The authors use GWAS data to identify genetic variants associated with various diseases. These variants often point to specific genes or biological pathways implicated in the disease. By mapping the identified genes and pathways to known drug targets, the study assesses whether existing drugs could be repurposed to treat conditions associated with these genetic findings. Okada \textit{et al.} examined how genetic studies of rheumatoid arthritis (RA) enhance our understanding of the disease and aid in drug discovery \cite{okada2014genetics}. The paper discusses numerous genetic variants identified through GWAS that are associated with RA. These variants highlight genes and pathways involved in immune function and inflammation that are targeted by already approved drugs.
+
+
+\subsubsection{Causal analysis}
+
+Causal analysis refers to an analysis that aims to infer the CDT that potentially causes the observed expression changes. The methods in this category often hypothesize that a drug compound could cause a disease phenotype if the compound's gene signature is positively correlated with disease's gene signature~\cite{huang2013inferring}. Although this approach uses the gene expression profiles to reach the same goal as our proposed method, it utilizes a totally different technique. A more direct approach to identify the CDT is applying graph theories on the cause-effect network between CDT and genes. Chindelevitch \textit{et al.} used two commercial knowledge bases, Selventa Inc. (\href{http://www.selventa.com}{http://www.selventa.com}) and Ingenuity Inc. (\href{http://www.ingenuity.com}{http://www.ingenuity.com}) to construct a network of molecular causal interactions  that would suggest molecular hypotheses that explain the observed changes in gene expression profiles. For each molecule, they used a scoring system which performs a subtraction of  the number of genes against the hypotheses from the number of genes supporting the hypotheses~\cite{chindelevitch2012causal}. Subsequently, they applied the distribution of the scores under the null and Fisher's exact test to compute the statistical significance. More recently, Kr{\"a}mer \textit{et al.} published a paper that presents the causal analysis approach in Ingenuity Pathway Analysis (IPA). This work has very similar goals with our approach, hence we will discuss and compare its performance with ours in the following subsections. Although there are computational methods using the similar techniques on specific applications, %e.g. ~\cite{pollard2005computational} on Type 2 Diabetes Mellitus, 
+large-scale and more general attempts are scarce in this field.
+
+
+
+
