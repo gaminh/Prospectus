@@ -1,30 +1,44 @@
 \newcommand*{\MyIndent}{\hspace*{0.5cm}}
 
 %\section{COVID-19: disease pathways and gene expression changes predict methylprednisolone can improve outcome in severe cases}
-\section{Drug repurposing for COVID-19 severe cases}
+\section{Drug repurposing for severe cases of COVID-19}
 \label{chap:COVID_Study}
 
-COVID-19 has several distinct clinical phases: a viral replication phase, an inflammatory phase, and in some patients, a hyper-inflammatory phase. High mortality is associated with patients developing cytokine storm syndrome. 
-Treatment of hyper-inflammation in these patients using existing, approved therapies with proven safety profiles could address the immediate need to reduce mortality. 
+During the early COVID-19 pandemic, global morbidity, mortality, and disruptions to healthcare systems and economies were significant. Mitigation efforts, including diagnostic testing, therapeutic interventions like oxygen therapy and ventilatory support, and vaccine development, had limited success in curbing infection and death rates. Identifying effective pharmacological treatments was a priority, but no sufficiently effective drugs were found initially. The traditional drug discovery process, which is lengthy, costly, and high-risk, prompted the adoption of drug repurposing. This approach leverages existing drugs with established safety profiles to reduce development time and costs, offering a faster, cost-effective solution for urgent medical needs like COVID-19 and rare diseases.
 
-We analyzed  the changes in the gene expression, pathways and putative mechanisms induced by SARS-CoV2 in  NHBE, and A549 cells, as well as COVID-19 lung vs. their respective controls. We used these changes and the approach described in the previous chapter to identify FDA approved drugs that could be repurposed to help COVID-19 patients with severe symptoms related to hyper-inflammation. We identified \textbf{methylprednisolone} (MP) as a potential leading therapy. 
-The results were then confirmed in five independent validation data sets including Vero E6 cells, lung and intestinal organoids, as well as additional patient lung sample vs. their respective controls. Finally, the efficacy of MP was validated in an independent clinical study. 
-Thirty-day all-cause mortality occurred at a significantly lower rate in the MP-treated group compared to control group ($29.6\%$ vs. $16.6\%$, $p=0.027$). Clinical results confirmed the \emph{in silico} prediction that MP could improve outcomes in severe cases of COVID-19.  A low number needed to treat ($NNT=5$) suggests MP may be more efficacious than dexamethasone or hydrocortisone. 
-
-\subsection{Introduction}
-
-Most current efforts related to COVID-19 span a number of areas as follows: i) antivirals, ii) vaccine development, iii) diagnostic tests, and iv) patient-supporting interventions. 
-Without reducing the significance and impact of any of the areas above, there is an important aspect that has not been elucidated: the identification and treatment of patients developing critical conditions and risk of mortality.  Recently, Mehta \textit{et al.} stated that ``Accumulating evidence suggests that a subgroup of patients with severe COVID-19 might have a cytokine storm syndrome'' that correlates with high mortality~\cite{mehta2020covid}.
-Therefore, identification and appropriate management of the patients developing cytokine storm syndrome is critical for successful outcomes. Treatment of hyper-inflammation in these patients using existing, approved therapies with proven safety profiles could address the immediate need to reduce the rising mortality. 
 
 COVID-19 has several distinct clinical phases:  an infection phase, a viral replication phase, an inflammatory phase, and in some patients, a hyper-inflammatory phase or cytokine storm~\cite{siddiqi2020covid,Ayres2020:survivingCOVID19}. After the initial viral phase of the illness, some patients will develop a cytokine storm which has being associated with the acute respiratory distress syndrome (ARDS) and mortality.  Therefore, in order to decrease the risk of mortality it is necessary to distinguish the phase where the viral pathogenicity is dominant versus when the host inflammatory response overtakes the pathology~\cite{siddiqi2020covid,Ayres2020:survivingCOVID19}. A potential approach is to develop interventions that could inhibit/prevent the hyper-inflammatory process leading to the cytokine storm.
 A strong argument in favor of also targeting the host response is offered by the data on influenza. Even though influenza patients receive optimal anti-viral therapy, approximately 25\% of the critically ill influenza patients still die~\cite{Ayres2020:survivingCOVID19,louie2012treatment}. This suggests that anti-viral therapy alone will not be sufficient for COVID-19 either, and the host response to the virus still needs to be taken into consideration.
 
 However, approaches aiming at modulating the immune response face some concerns. In particular, it may seem counter-intuitive to try to diminish the immune response in a patient whose immune system is fighting against a virus. Modulating the immune system is likely unnecessary and counter-productive for patients whose immune system is doing a good job at resolving the infection, while it could potentially be life-saving for those whose inflammatory response has become dysregulated. If a patient has developed severe respiratory symptoms and is hypoxic, the host response that lead to ARDS, sepsis, and organ failure has already been initiated~\cite{mehta2020covid}. At this point, the focus should shift to supporting the patient's systems and preventing collapse triggered by hyper-inflammation~\cite{Ayres2020:survivingCOVID19}. 
 
-In order to identify the best potential therapeutic approach, we performed a transcriptome analysis of tissues and cell samples infected with SARS-CoV-2 in order to understand the main mediators of the inflammatory process. Once characterized the inflammatory pathways we identified drugs that would mitigate or alleviate some of the devastating over-reactions of the host's immune system (e.g. cytokine storm). Finally, we evaluated the efficacy of the identified drug in a small cohort of COVID-19 patients.
+We analyzed the changes in the gene expression, pathways and putative mechanisms induced by SARS-CoV2 in NHBE, and A549 cells, as well as COVID-19 lung vs. their respective controls in order to understand the main mediators of the inflammatory process. Once the inflammatory pathways was characterized, we identified drugs that would mitigate or alleviate some of the devastating over-reactions of the host's immune system (e.g. cytokine storm)
+Treatment of hyper-inflammation in these patients using existing, approved therapies with proven safety profiles could address the immediate need to reduce mortality. 
 
-\subsection{Approach}
+%In an attempt to proposed a potential drug for treating COVID-19 from the list of FDA approved drugs, we analyzed  the changes in the gene expression, pathways and putative mechanisms induced by SARS-CoV2 in  NHBE, and A549 cells, as well as COVID-19 lung vs. their respective controls.
+
+We used these changes and the approach described in the previous chapter to identify FDA approved drugs that could be repurposed to help COVID-19 patients with severe symptoms related to hyper-inflammation. We identified \textbf{methylprednisolone} (MP) as a potential leading therapy. 
+The results were then confirmed in five independent validation data sets including Vero E6 cells, lung and intestinal organoids, as well as additional patient lung sample vs. their respective controls. Finally, the efficacy of MP was validated in an independent clinical study. 
+Thirty-day all-cause mortality occurred at a significantly lower rate in the MP-treated group compared to control group ($29.6\%$ vs. $16.6\%$, $p=0.027$). Clinical results confirmed the \emph{in silico} prediction that MP could improve outcomes in severe cases of COVID-19.  A low number needed to treat ($NNT=5$) suggests MP may be more efficacious than dexamethasone or hydrocortisone. 
+
+
+
+
+
+%\subsection{Introduction}
+
+%Most current efforts related to COVID-19 span a number of areas as follows: i) antivirals, ii) vaccine development, iii) diagnostic tests, and iv) patient-supporting interventions. 
+%Without reducing the significance and impact of any of the areas above, there is an important aspect that has not been elucidated: the identification and treatment of patients developing critical conditions and risk of mortality.  Recently, Mehta \textit{et al.} stated that ``Accumulating evidence suggests that a subgroup of patients with severe COVID-19 might have a cytokine storm syndrome'' that correlates with high mortality~\cite{mehta2020covid}.
+%Therefore, identification and appropriate management of the patients developing cytokine storm syndrome is critical for successful outcomes. Treatment of hyper-inflammation in these patients using existing, approved therapies with proven safety profiles could address the immediate need to reduce the rising mortality. 
+
+
+
+
+%In order to identify the best potential therapeutic approach, we performed a transcriptome analysis of tissues and cell samples infected with SARS-CoV-2 in order to understand the main mediators of the inflammatory process. Once characterized the inflammatory pathways we identified drugs that would mitigate or alleviate some of the devastating over-reactions of the host's immune system (e.g. cytokine storm). Finally, we evaluated the efficacy of the identified drug in a small cohort of COVID-19 patients.
+
+\subsection{Approach and methods}
+
+\subsubsection{Approach}
 
 We used data from cell lines, cell cultures as well as human patients to understand the changes induced by the infection with SARS-CoV-2. 
 
@@ -54,6 +68,111 @@ The existing FDA-approved drug that resulted from the process above was validate
     that are targeted by existing FDA-approved drugs (in ovals). Note that all up-regulated genes are pro-inflammatory while the down-regulated genes are anti-inflammatory, supporting the idea that the severe symptoms may be caused by a cytokine storm.}
         \label{Supp:cytokine-cytokine_pathway}
 \end{figure*}
+
+
+\subsubsection{Methods}
+\textbf{Gene Ontology (GO) analysis method.}  For each GO term~\cite{ashburner2002ontologies, gene2004gene}, the number of differentially expressed (DE) genes annotated to the term is compared to the number of DE genes expected just by chance. We used  an over-representation approach to compute the statistical significance of observing at least the given number of DE genes, as proposed by~\cite{Tavazoie:1999}. The uncorrected p-value is computed using the hypergeometric distribution, as previously described~\cite{DraghiciOE2:2003, DraghiciBook:2011}, and corrected with FDR and Bonferroni.
+
+The classical method used above considers all GO terms to be independent. However, given the nature of gene ontology, considering the genes multiple times introduces errors~\cite{Rhee:2008, DraghiciBook:2011}. Due to the ``true path rule'', all  genes annotated to a GO term are also annotated to all its ancestors when traversing ``is a'' relationships. Because of this, the same genes are counted in the enrichment of every term above the one they are directly annotated with.  We used an approach inspired by  the \textit{elim} and \emph{weight} pruning methods as originally proposed by Alexa \textit{et al.}~\cite{Alexa:2006}. The algorithm constructs a custom cut through the GO hierarchy by starting with the most specific nodes and calculating their uncorrected p-value with all genes assigned directly to each such node. If a node is significant, it is reported as such. If the node is not significant, the genes associated to the given node are propagated to its direct ancestors and a uncorrected p-value is calculated for each of those. 
+
+\textbf{Pathway analysis method.}  
+iPathwayGuide (\url{www.advaitabio.com}) assesses pathways using the Impact Analysis method as previously published~\cite{DraghiciPE:2007, tarca2009novel, khatri2007}. The impact analysis uses two types of evidence: i) the over-representation of differentially expressed (DE) genes in a given pathway and ii) the perturbation of that pathway computed by propagating the measured expression changes across the pathway topology. These aspects are captured by two independent probability values, $pORA$ and $pAcc$, that are then combined in a unique pathway-specific uncorrected p-value. The underlying pathway topologies, comprised of genes and their directional interactions, are obtained from the KEGG database~\cite{ogata1999kegg, kanehisa2010kegg, kanehisa2012kegg,  kanehisa2014data}.
+
+The first probability, $pORA$, expresses the probability of observing the number of DE genes in a given pathway that is greater than or equal to the number observed, by random chance~\cite{DraghiciOE2:2003,DraghiciBook:2011}. Let us consider there are $N$ genes measured in the experiment, with $K$ of these on the given pathway. Based on the user-defined a priori selection of DE genes, $n$ out of $N$ genes were found to be differentially expressed. The probability of observing exactly $k$ differentially expressed genes on the given pathway is computed based on the hypergeometric distribution.
+
+Because the hypergeometric distribution is discrete, the probability of observing fewer than $k$ or more genes on the given pathway just by chance is defined as 1 minus  the hypergeometric cumulative density function evaluated at $k-1$.
+
+
+The second probability, $pAcc$, is calculated based on the amount of total accumulation measured in each pathway. A perturbation factor is computed for each gene on the pathway using:
+
+\begin{equation}
+\label{eqn:PF}
+PF(g) = \alpha(g) \cdot \Delta E(g) + \sum_{u \in US_g} \beta_{ug}\frac{PF(u)}{N_{ds}(u)}
+\end{equation}
+
+
+In Equation~\ref{eqn:PF}, $PF(g)$ is the perturbation factor for gene $g$, the term $\Delta E(g)$ represents the observed fold change of gene $g$, and $\alpha(g)$ is an a priori weight that can be used to incorporate information about the type of gene or its significance~\cite{voichita2012incorporating}. In this analysis, all gene were treated equally (all $\alpha(g)=1$). The last term is the sum of the perturbation factors of all genes $u$, directly upstream of the target gene $g$, normalized by the number of downstream genes of each such gene $N_{ds}(u)$. The value of $\beta_{ug}$ quantifies the strength of the interaction between genes $g$ and $u$. The sign of $\beta$ represents the type of interaction: positive for activation-like signals, and negative for inhibition-like signals. Subsequently, iPathwayGuide calculates the accumulation at the level of each gene, $Acc(g)$, as the difference between the perturbation factor $PF(g)$ and the observed fold change:
+
+\begin{equation}
+Acc(g) = PF(g) - \Delta E(g)
+\label{eqn:acc}
+\end{equation}
+
+All perturbation accumulations are computed at the same time by solving the system of linear equations resulting from combining Equation~\ref{eqn:PF} for all genes on a given pathway. Once all gene perturbation accumulations are computed, iPathwayGuide computes the total accumulation of the pathway as the sum of all absolute accumulations of the genes in a given pathway. The significance of obtaining a total accumulation ($pAcc$) at least as large as observed, just by chance, is assessed through bootstrap analysis.
+
+The two types of evidence, $pORA$ and $pAcc$, are combined into an overall pathway score by calculating an uncorrected p-value using Fisher's method. This p-value is then corrected for multiple comparisons using false discovery rate (FDR)~\cite{Benjamini:1995,  Benjamini:2001} and Bonferroni~\cite{Bonferroni:1935} corrections. 
+
+
+The underlying pathway topologies, comprised of genes and their directional interactions, are obtained from the KEGG database~\cite{ogata1999kegg, kanehisa2010kegg, kanehisa2012kegg,  kanehisa2014data}.
+
+
+\textbf{Putative mechanism inference.} The impact analysis  allows the computation of the perturbation at the level of every gene on every pathway. Putative mechanisms are identified as sequences of pathway signals for which the measured gene expression changes are consistent with the sequence of events described by the pathway. An example would be the chemokine-chemokine receptor-JAK-STAT sequence identified on the Chemokine Signaling Pathway  in Fig.~\ref{Supp:drugs_on_chemokine_signaling}. This approach is able to identify candidates for potentially active mechanisms on existing pathways and has also been shown to have an increased accuracy~\cite{nguyen2019identifying}. %In order to 
+
+
+\textbf{The prediction of upstream Chemicals, Drugs, Toxicants (CDTs)} is based on two types of information: i) the enrichment of DE genes from the experiment and ii) a network of interactions from the Advaita Knowledge Base (AKB v1910). The network is a directed graph in which the source node represents either a chemical substance or compound, a drug, or a toxicant (CDT). We focused our work on FDA-approved drugs that could be repurposed. The edges represent known effects that these CDTs have on various genes. A signed edge in this graph consists of a source CDT ($u$), a target gene, and a sign to indicate the type of effect: activation ($+1$) or inhibition ($-1$). 
+The variable $u$ here stands for a CTD but its role is similar to the role of the upstream gene as used in Equation~\ref{eqn:PF} in the impact analysis. In both cases, the analysis is performed on a graph in which ``u'' is the immediately upstream node. In the impact analysis, the upstream node was  a gene whereas here, the upstream node will represent a CTD.
+
+The analysis considers the hypothesis that  the upstream chemical, drug or toxicant is absent (or insufficient) in the condition studied. In essence, a drug for which this hypothesis is supported by a significant amount of evidence will be a very strong candidate for repurposing because such drug will effectively reverse many of the gene expression changes observed in the given disease. 
+
+
+The analysis divides the set of all the genes from the AKB into several subsets based on the measurements in the experiment and the definitions shown in Fig.~\ref{TwoHypotheses} and Fig. ~\ref{MeasuredGenes}. 
+A gene is a target gene if it corresponds to a node in the network that has at least one incoming edge. We define a consistent gene as a target DE gene such that the sign of the gene is consistent both with the type of the signal and with the hypothesis considered. 
+This case captures the situation in which the CDT is absent (or insufficient), the signal is inhibition and the target DE gene is up-regulated, or the signal is activation and the target DE gene is down-regulated (see Fig.~\ref{TwoHypotheses}).
+
+\begin{figure}
+\centering
+	\includegraphics[width=0.6\linewidth]{../Figures/TwoHypotheses.png}
+        \caption{A candidate for repurposing would revert the changes of the  observed DE genes. This potential drug \emph{u} would repress the  gene which is up-regulated by the disease (red circle) and would activate the one that is repressed (blue circle). }
+        \label{TwoHypotheses}
+\end{figure}
+
+\begin{figure}
+	\includegraphics[width=0.9\linewidth]{../Figures/MeasuredGenes.png}
+        \caption{The set of all genes includes the set of measured genes that are also targets in the network, or Measured Targets (MT). We define the subset of ``DE Targets consistent with the hypothesis that the CDTs are  insufficient'', DTI. For a selected upstream CDT \emph{u}, we have the set of ``Measured Targets of u'' MT(u), ``Differentially expressed Targets downstream of u'' DT(u), and the set of ``DE targets consistent with the hypothesis that u is insufficient'' DTI(u).}
+        \label{MeasuredGenes}
+\end{figure}
+
+%\newpage
+
+For the research hypothesis considered, the analysis computes a z-score, $z(u)$, for each CDT $u$, by iterating over the genes that are differentially expressed and immediately downstream of $u$, $DT(u)$: 
+
+
+\begin{equation}
+\label{eq:zscore}
+z(u)=\frac{\sum\limits_{g \in DT(u)} sign(e(u,g)) \times sign(g)}{\sqrt{|DT(u)|}}
+\end{equation}
+
+where $sign(g)$ is the sign of the DE gene $g$ (1 for up-regulated and -1 for down-regulated), $e(u,g)$ represents an edge from $u$ to $g$,  $sign(e(u,g))$ reflects its type of interaction ($1$ for activation and $-1$ for inhibition), and $|DT(u)|$ represents the number of genes that are differentially expressed and immediately downstream of $u$. 
+
+
+Under the null hypothesis, the sign of an edge, $sign(e_i)$, and the sign of a gene, $sign(g_i)$, are independent and identically distributed random variables that have either values $-1$ or $1$.  Let $X_i = sign(e_i) \times sign(g_i)$ denote the product of these two variables. Therefore, $X_i$ is also a random variable taking values from $\{-1,1\}$, with the expected value $E[X_i] = \mu = 0$, variance $Var[X_i] = \sigma^2 = 1$. Considering an upstream CDT with $n$ downstream genes ($n = |DT(u)|$), the  average of $n$ samples of $X_i, i \in \{1,...,n\}$ is $\overline{X}_n$.  According to the central limit theorem, the variables $\sqrt{n}(\overline{X}_n - \mu)$ converge  to a normal distribution $N(0,1)$ for large values of $n$. With $\mu = 0$, those variables can be written as:
+
+\begin{equation}
+\sqrt{n} \cdot \overline{X}_n = \frac{n \cdot \overline{X}_n} {\sqrt{n}} = \frac{n \cdot \frac{\sum_{i=1}^n X_i}{n}}{\sqrt{n}} = \frac{\sum_{i=1}^n X_i}{\sqrt{n}}
+\end{equation}
+
+The numerator is actually the sum of all $n$ samples $X_i$, $\sum{X_i}$, which is also the numerator of equation \ref{eq:zscore}. 
+Moreover, we have $n = |DT(u)|$.
+Hence, we can conclude that the variable $z(u)$ follows a standard normal distribution, $N(0,1)$. Therefore, we can compute the p-value corresponding to the z-score $P_z$ as the one-tail area under the probability density function for normal distribution.
+
+\textbf{Identifying candidate drugs for repurposing.}
+A good candidate for repurposing would revert many of changes observed. This is equivalent  with the research hypothesis that considers the condition is due to a given CDT that is present in insufficient amounts.
+We use $P_{abs}$ and $P_z$ to predict upstream CDTs that would revert the measured changes. 
+%This hypothesis is also relevant when investigating whether the given phenotype has been impacted by the lack of a given chemical that is necessary for the well-functioning of the organism or cell (e.g. a vitamin deficiency, iron deficiency, etc.). Here, the research hypothesis states that the upstream CDT are insufficient in the condition studied. 
+For each upstream CDT $u$, the number of consistent DE genes downstream of $u$, $DTI(u)$, is compared to the number of measured target genes expected to be both consistent and DE just by chance. The uncorrected p-value $P_{abs}$ is computed using the hypergeometric distribution~\cite{DraghiciOT:2003, DraghiciBook:2011}. The analysis combines $P_{abs}$ and $P_z$, using  Fisher's method~\cite{fisher1925statistical}. %where $P_z$ is considered only for significant negative z-scores ($z \leqslant -2$).
+
+
+
+\textbf{Clinical Validation.} 
+We evaluated the MP protocol with a single pretest, single post-test quasi-experiment from March 12-March 27, 2020 at a 5 hospital health system in Michigan. Patients were compared before and after implementation of the MP protocol on March 20th. The clinical characteristics of the patients are shown in Table~\ref{Supp:clinicalcharacteristics}. 
+The primary endpoint was 30 day all-cause mortality.  
+
+\textbf{The methylprednisolone protocol.}  
+Patients with PCR confirmed COVID-19 who required 4 liters or more of oxygen per minute on admission, or who had escalating oxygen requirements from baseline, were recommended to receive IV methylprednisolone 0.5 to 1 mg/kg/day in 2 divided doses for 3 days. Patients who required ICU admission were eligible to extend the IV methylprednisolone course to a maximum of 7 days at the discretion of the medical team. Institutional guidelines also recommended hydroxychloroquine 400 mg twice daily for 2 doses on day 1, followed by 200 mg twice daily on days 2--5.
+
+\textbf{Statistical Analysis of clinical data.} Continuous variables were reported as median and interquartile range (IQR) and compared using the Mann-Whitney test or t-test, as appropriate. Categorical data was reported as number and percentage (no., \%) and compared using the chi-squared test or Fisher's exact test, as appropriate. No imputation was made for missing data points. The sample included all eligible consecutive hospitalized patients during the study period. A non-equivalent dependent variable of antibiotic prescribing was utilized to account for potential maturation in treatment. Survival analysis was performed using the Kaplan-Meier method and log-rank test. 
+
+
 
 
 
@@ -218,7 +337,7 @@ Fig.~\ref{Supp:drugs_validation} shows existing FDA-approved drugs identified as
 \end{figure}
 
 %\color{black}
-\subsection{In vivo effect of methylprednisolone: Clinical validation}
+\subsection{Clinical validation: in vivo effect of methylprednisolone}
 
 In an independent study, 213 patients diagnosed with COVID-19 were enrolled. 81 (38\%) received conventional therapy (control group) while 132 patients (62\%) received MP (MP group). The clinical characteristics and treatments received by the patients are shown in Table~\ref{Supp:clinicalcharacteristics} and Table~\ref{additionaltreatment}, respectively. As shown in Table ~\ref{endpoints}, thirty day all-cause mortality occurred at a significantly lower rate in the MP group compared to control group ($29.6\%$ vs. $16.6\%, p=0.027$). No statistical difference was detected in the proportion of patients prescribed empiric antibiotics or the time to empiric therapy. Kaplan Meier survival curve for 30-day mortality demonstrated increased probability of survival at 30-days in the MP group as compared to the control group ($p= 0.0204$) (Fig.~\ref{survival}).
 
@@ -350,7 +469,8 @@ For a composite end point of preventing ICU admission, need for mechanical venti
 \end{figure}
 
 %\vspace{-3mm}
-\subsection{Other drugs investigated}
+\subsection{Other drugs investigated} \label{sec:OtherDrugs}
+
 
 We also looked at other drugs that have already been proposed as repurposing candidates for COVID-19 including: \textbf{chloroquine}, \textbf{hydroxychloroquine}, \textbf{erythromycin},  \textbf{prednisone}, \textbf{dexamethasone},  \textbf{ibuprofen}, \textbf{ritonavir}, \textbf{aspirin}, and \textbf{clopidogrel}. Most or all of these drugs are currently under clinical trials~\cite{sanders2020pharmacologic}. 
 
@@ -427,10 +547,10 @@ Hydroxychloroquine & 6 & \makecell[c]{1} & \makecell[c]{0} \\
 \label{Supp:drugcoverage}
 \end{table}%
 
-The host inflammatory response in the lungs lead to acute lung injury and ARDS. This constitutes the main rationale for the use of corticosteroids. However, administration of corticosteroids is associated with multiple side effects, such as an increased risk of secondary infection and delayed viral clearance. A recent article in Lancet reports that clinical evidence does not support corticosteroid treatment for COVID-19~\cite{russell2020clinical}. However, this report looks at corticosteroids as an entire class of drugs. A recent retrospective study of 201 patients with COVID-19 in China found that treatment with MP for those who developed ARDS was associated effective in decreasing the risk of death. Among patients with ARDS, treatment with MP decreased the risk of death (HR, 0.38; 95\% CI, 0.20-0.72). In this study, 23 of 50 [46\%] patients with MP treatment died compared to 21 deaths out of  34 patients without MP treatment~\cite{wu2020risk}. Both reports are entirely consistent with our findings: corticosteroids in general are NOT expected to help as a class of drugs, but rather each steroid should be assessed individually.
+The host inflammatory response in the lungs lead to acute lung injury and ARDS. This constitutes the main rationale for the use of corticosteroids. However, administration of corticosteroids is associated with multiple side effects, such as an increased risk of secondary infection and delayed viral clearance. An article in Lancet reports that clinical evidence does not support corticosteroid treatment for COVID-19~\cite{russell2020clinical}. However, this report looks at corticosteroids as an entire class of drugs. A retrospective study of 201 patients with COVID-19 in China found that treatment with MP for those who developed ARDS was associated effective in decreasing the risk of death. Among patients with ARDS, treatment with MP decreased the risk of death (HR, 0.38; 95\% CI, 0.20-0.72). In this study, 23 of 50 [46\%] patients with MP treatment died compared to 21 deaths out of  34 patients without MP treatment~\cite{wu2020risk}. Both reports are entirely consistent with our findings: corticosteroids in general are NOT expected to help as a class of drugs, but rather each steroid should be assessed individually.
 
 
-Methylprednisolone has been also the focus on several other recent clinical studies. Wu \emph{et al.} studied the effect of MP  in a cohort of 201 COVID-19 patients, of which 84 developed ARDS~\cite{WuRiskFactorsCOVID:2020}.  They report that ``among patients with ARDS, treatment with MP decreased the risk of death (HR, 0.38; 95\% CI, 0.20-0.72).'' The percentage of people who developed ARDS and eventually died was reduced from  61.8\% (21 of 34) to 46\% (23 of 50).
+Methylprednisolone has been also the focus on several recent clinical studies. Wu \emph{et al.} studied the effect of MP  in a cohort of 201 COVID-19 patients, of which 84 developed ARDS~\cite{WuRiskFactorsCOVID:2020}.  They report that ``among patients with ARDS, treatment with MP decreased the risk of death (HR, 0.38; 95\% CI, 0.20-0.72).'' The percentage of people who developed ARDS and eventually died was reduced from  61.8\% (21 of 34) to 46\% (23 of 50).
 
 Salton \emph{et al.}  conducted a multi-center, observational study to explore the association between a prolonged, low-dose of MP and a composite endpoint including the need for ICU referrals, intubation, or death within 28 days (\href{www.clinicaltrials.gov}{www.clinicaltrials.gov}, NCT04323592)~\cite{salton2020prolonged}. They found that in a cohort of 83 patients treated with MP and 90 controls, the treatment with MP significantly lowered the hazard of death (71\%). The composite end point was met by 19 vs. 40 (adjusted hazard ratio (HR) 0.41; 95\% confidence interval (CI): 0.24-0.72). Transfer to ICU and need for invasive MV was necessary in 15 vs. 27 ($p=0.07$) and 14 vs. 26 ($p=0.10$), respectively. By day 28, the MP group had fewer deaths (6 vs. 21, adjusted HR=0.29; 95\% CI: 0.12-0.73) and more days off invasive MV (24.0 +/- 9.0 vs. 17.5 +/- 12.8; $p=0.001$).
 
@@ -443,7 +563,7 @@ Salton \emph{et al.}  conducted a multi-center, observational study to explore t
 
 A similar multi-center study focus on MP was undertaken in Spain (European Clinical Trials Register: 2020-001934-37). This study involved 85 patients of which 34 were randomized to MP, 22 were assigned to MP by the clinician and 29 constituted the control group. The composite endpoint requirement of non-invasive ventilation, admission to ICU, and death. This study reported that the use of MP was associated with a reduced risk of the composite endpoint  (RR 0.55 95\% CI 0.33-0.91) ({https://www.medrxiv.org/content/\\10.1101/2020.06.17.20133579v1}).
 
-Finally, preliminary results from a large randomized study undertaken in the UK \\(NCT04381936) show that dexamethasone is also able to significantly reduce the number of deaths. In this study the steroid group included 2,100 participants and was compared with the standard of care group including 4,300 participants. Unfortunately, this study placed dexamethasone in the same arm with MP (MP to be administered to pregnant women instead of dexamethasone), so this study will not be able to elucidate whether MP and dexamethasone have any differences in efficacy. However, the results of the clinical study presented here suggest that MP has a lower NNT than dexamethasone. The potential higher efficacy of MP needs to be confirmed in larger cohorts. However, in a recent meta-analysis of randomized studies investigating prolonged corticosteroid treatment in non-viral ARDS, methylprednisolone treatment achieved a reduction in duration of mechanical ventilation and mortality superior to that of dexamethasone or hydrocortisone~\cite{meduri2020pharmacological}.
+Finally, preliminary results from a large randomized study undertaken in the UK \\(NCT04381936) show that dexamethasone is also able to significantly reduce the number of deaths. In this study the steroid group included 2,100 participants and was compared with the standard of care group including 4,300 participants. Unfortunately, this study placed dexamethasone in the same arm with MP (MP to be administered to pregnant women instead of dexamethasone), so this study will not be able to elucidate whether MP and dexamethasone have any differences in efficacy. However, the results of the clinical study presented here suggest that MP has a lower NNT than dexamethasone. The potential higher efficacy of MP needs to be confirmed in larger cohorts. However, in a meta-analysis of randomized studies investigating prolonged corticosteroid treatment in non-viral ARDS, methylprednisolone treatment achieved a reduction in duration of mechanical ventilation and mortality superior to that of dexamethasone or hydrocortisone~\cite{meduri2020pharmacological}.
 
 We also looked at other drugs that have already been proposed as repurposing candidates for COVID-19 including: chloroquine, hydroxychloroquine, erythromycin, prednisone, ibuprofen, ritonavir, aspirin, and clopidogrel. None of these was predicted to be effective in reverting SARS-CoV2 gene expression changes (see Table ~\ref{Supp:drugcoverage}).
 
@@ -476,108 +596,6 @@ In summary, we describe the inflammatory pathways associated with the cytokine s
 
 
 %\vspace{-5mm}
-\subsection{Methods}
-\textbf{Gene Ontology (GO) analysis method.}  For each GO term~\cite{ashburner2002ontologies, gene2004gene}, the number of differentially expressed (DE) genes annotated to the term is compared to the number of DE genes expected just by chance. We used  an over-representation approach to compute the statistical significance of observing at least the given number of DE genes, as proposed by~\cite{Tavazoie:1999}. The uncorrected p-value is computed using the hypergeometric distribution, as previously described~\cite{DraghiciOE2:2003, DraghiciBook:2011}, and corrected with FDR and Bonferroni.
-
-The classical method used above considers all GO terms to be independent. However, given the nature of gene ontology, considering the genes multiple times introduces errors~\cite{Rhee:2008, DraghiciBook:2011}. Due to the ``true path rule'', all  genes annotated to a GO term are also annotated to all its ancestors when traversing ``is a'' relationships. Because of this, the same genes are counted in the enrichment of every term above the one they are directly annotated with.  We used an approach inspired by  the \textit{elim} and \emph{weight} pruning methods as originally proposed by Alexa \textit{et al.}~\cite{Alexa:2006}. The algorithm constructs a custom cut through the GO hierarchy by starting with the most specific nodes and calculating their uncorrected p-value with all genes assigned directly to each such node. If a node is significant, it is reported as such. If the node is not significant, the genes associated to the given node are propagated to its direct ancestors and a uncorrected p-value is calculated for each of those. 
-
-\textbf{Pathway analysis method.}  
-iPathwayGuide (\url{www.advaitabio.com}) assesses pathways using the Impact Analysis method as previously published~\cite{DraghiciPE:2007, tarca2009novel, khatri2007}. The impact analysis uses two types of evidence: i) the over-representation of differentially expressed (DE) genes in a given pathway and ii) the perturbation of that pathway computed by propagating the measured expression changes across the pathway topology. These aspects are captured by two independent probability values, $pORA$ and $pAcc$, that are then combined in a unique pathway-specific uncorrected p-value. The underlying pathway topologies, comprised of genes and their directional interactions, are obtained from the KEGG database~\cite{ogata1999kegg, kanehisa2010kegg, kanehisa2012kegg,  kanehisa2014data}.
-
-The first probability, $pORA$, expresses the probability of observing the number of DE genes in a given pathway that is greater than or equal to the number observed, by random chance~\cite{DraghiciOE2:2003,DraghiciBook:2011}. Let us consider there are $N$ genes measured in the experiment, with $K$ of these on the given pathway. Based on the user-defined a priori selection of DE genes, $n$ out of $N$ genes were found to be differentially expressed. The probability of observing exactly $k$ differentially expressed genes on the given pathway is computed based on the hypergeometric distribution.
-
-Because the hypergeometric distribution is discrete, the probability of observing fewer than $k$ or more genes on the given pathway just by chance is defined as 1 minus  the hypergeometric cumulative density function evaluated at $k-1$.
-
-
-The second probability, $pAcc$, is calculated based on the amount of total accumulation measured in each pathway. A perturbation factor is computed for each gene on the pathway using:
-
-\begin{equation}
-\label{eqn:PF}
-PF(g) = \alpha(g) \cdot \Delta E(g) + \sum_{u \in US_g} \beta_{ug}\frac{PF(u)}{N_{ds}(u)}
-\end{equation}
-
-
-In Equation~\ref{eqn:PF}, $PF(g)$ is the perturbation factor for gene $g$, the term $\Delta E(g)$ represents the observed fold change of gene $g$, and $\alpha(g)$ is an a priori weight that can be used to incorporate information about the type of gene or its significance~\cite{voichita2012incorporating}. In this analysis, all gene were treated equally (all $\alpha(g)=1$). The last term is the sum of the perturbation factors of all genes $u$, directly upstream of the target gene $g$, normalized by the number of downstream genes of each such gene $N_{ds}(u)$. The value of $\beta_{ug}$ quantifies the strength of the interaction between genes $g$ and $u$. The sign of $\beta$ represents the type of interaction: positive for activation-like signals, and negative for inhibition-like signals. Subsequently, iPathwayGuide calculates the accumulation at the level of each gene, $Acc(g)$, as the difference between the perturbation factor $PF(g)$ and the observed fold change:
-
-\begin{equation}
-Acc(g) = PF(g) - \Delta E(g)
-\label{eqn:acc}
-\end{equation}
-
-All perturbation accumulations are computed at the same time by solving the system of linear equations resulting from combining Equation~\ref{eqn:PF} for all genes on a given pathway. Once all gene perturbation accumulations are computed, iPathwayGuide computes the total accumulation of the pathway as the sum of all absolute accumulations of the genes in a given pathway. The significance of obtaining a total accumulation ($pAcc$) at least as large as observed, just by chance, is assessed through bootstrap analysis.
-
-The two types of evidence, $pORA$ and $pAcc$, are combined into an overall pathway score by calculating an uncorrected p-value using Fisher's method. This p-value is then corrected for multiple comparisons using false discovery rate (FDR)~\cite{Benjamini:1995,  Benjamini:2001} and Bonferroni~\cite{Bonferroni:1935} corrections. 
-
-
-The underlying pathway topologies, comprised of genes and their directional interactions, are obtained from the KEGG database~\cite{ogata1999kegg, kanehisa2010kegg, kanehisa2012kegg,  kanehisa2014data}.
-
-
-\textbf{Putative mechanism inference.} The impact analysis  allows the computation of the perturbation at the level of every gene on every pathway. Putative mechanisms are identified as sequences of pathway signals for which the measured gene expression changes are consistent with the sequence of events described by the pathway. An example would be the chemokine-chemokine receptor-JAK-STAT sequence identified on the Chemokine Signaling Pathway  in Fig.~\ref{Supp:drugs_on_chemokine_signaling}. This approach is able to identify candidates for potentially active mechanisms on existing pathways and has also been shown to have an increased accuracy~\cite{nguyen2019identifying}. %In order to 
-
-
-\textbf{The prediction of upstream Chemicals, Drugs, Toxicants (CDTs)} is based on two types of information: i) the enrichment of DE genes from the experiment and ii) a network of interactions from the Advaita Knowledge Base (AKB v1910). The network is a directed graph in which the source node represents either a chemical substance or compound, a drug, or a toxicant (CDT). We focused our work on FDA-approved drugs that could be repurposed. The edges represent known effects that these CDTs have on various genes. A signed edge in this graph consists of a source CDT ($u$), a target gene, and a sign to indicate the type of effect: activation ($+1$) or inhibition ($-1$). 
-The variable $u$ here stands for a CTD but its role is similar to the role of the upstream gene as used in Equation~\ref{eqn:PF} in the impact analysis. In both cases, the analysis is performed on a graph in which ``u'' is the immediately upstream node. In the impact analysis, the upstream node was  a gene whereas here, the upstream node will represent a CTD.
-
-The analysis considers the hypothesis that  the upstream chemical, drug or toxicant is absent (or insufficient) in the condition studied. In essence, a drug for which this hypothesis is supported by a significant amount of evidence will be a very strong candidate for repurposing because such drug will effectively reverse many of the gene expression changes observed in the given disease. 
-
-
-The analysis divides the set of all the genes from the AKB into several subsets based on the measurements in the experiment and the definitions shown in Fig.~\ref{TwoHypotheses} and Fig. ~\ref{MeasuredGenes}. 
-A gene is a target gene if it corresponds to a node in the network that has at least one incoming edge. We define a consistent gene as a target DE gene such that the sign of the gene is consistent both with the type of the signal and with the hypothesis considered. 
-This case captures the situation in which the CDT is absent (or insufficient), the signal is inhibition and the target DE gene is up-regulated, or the signal is activation and the target DE gene is down-regulated (see Fig.~\ref{TwoHypotheses}).
-
-\begin{figure}
-\centering
-	\includegraphics[width=0.6\linewidth]{../Figures/TwoHypotheses.png}
-        \caption{A candidate for repurposing would revert the changes of the  observed DE genes. This potential drug \emph{u} would repress the  gene which is up-regulated by the disease (red circle) and would activate the one that is repressed (blue circle). }
-        \label{TwoHypotheses}
-\end{figure}
-
-\begin{figure}
-	\includegraphics[width=0.9\linewidth]{../Figures/MeasuredGenes.png}
-        \caption{The set of all genes includes the set of measured genes that are also targets in the network, or Measured Targets (MT). We define the subset of ``DE Targets consistent with the hypothesis that the CDTs are  insufficient'', DTI. For a selected upstream CDT \emph{u}, we have the set of ``Measured Targets of u'' MT(u), ``Differentially expressed Targets downstream of u'' DT(u), and the set of ``DE targets consistent with the hypothesis that u is insufficient'' DTI(u).}
-        \label{MeasuredGenes}
-\end{figure}
-
-%\newpage
-
-For the research hypothesis considered, the analysis computes a z-score, $z(u)$, for each CDT $u$, by iterating over the genes that are differentially expressed and immediately downstream of $u$, $DT(u)$: 
-
-
-\begin{equation}
-\label{eq:zscore}
-z(u)=\frac{\sum\limits_{g \in DT(u)} sign(e(u,g)) \times sign(g)}{\sqrt{|DT(u)|}}
-\end{equation}
-
-where $sign(g)$ is the sign of the DE gene $g$ (1 for up-regulated and -1 for down-regulated), $e(u,g)$ represents an edge from $u$ to $g$,  $sign(e(u,g))$ reflects its type of interaction ($1$ for activation and $-1$ for inhibition), and $|DT(u)|$ represents the number of genes that are differentially expressed and immediately downstream of $u$. 
-
-
-Under the null hypothesis, the sign of an edge, $sign(e_i)$, and the sign of a gene, $sign(g_i)$, are independent and identically distributed random variables that have either values $-1$ or $1$.  Let $X_i = sign(e_i) \times sign(g_i)$ denote the product of these two variables. Therefore, $X_i$ is also a random variable taking values from $\{-1,1\}$, with the expected value $E[X_i] = \mu = 0$, variance $Var[X_i] = \sigma^2 = 1$. Considering an upstream CDT with $n$ downstream genes ($n = |DT(u)|$), the  average of $n$ samples of $X_i, i \in \{1,...,n\}$ is $\overline{X}_n$.  According to the central limit theorem, the variables $\sqrt{n}(\overline{X}_n - \mu)$ converge  to a normal distribution $N(0,1)$ for large values of $n$. With $\mu = 0$, those variables can be written as:
-
-\begin{equation}
-\sqrt{n} \cdot \overline{X}_n = \frac{n \cdot \overline{X}_n} {\sqrt{n}} = \frac{n \cdot \frac{\sum_{i=1}^n X_i}{n}}{\sqrt{n}} = \frac{\sum_{i=1}^n X_i}{\sqrt{n}}
-\end{equation}
-
-The numerator is actually the sum of all $n$ samples $X_i$, $\sum{X_i}$, which is also the numerator of equation \ref{eq:zscore}. 
-Moreover, we have $n = |DT(u)|$.
-Hence, we can conclude that the variable $z(u)$ follows a standard normal distribution, $N(0,1)$. Therefore, we can compute the p-value corresponding to the z-score $P_z$ as the one-tail area under the probability density function for normal distribution.
-
-\textbf{Identifying candidate drugs for repurposing.}
-A good candidate for repurposing would revert many of changes observed. This is equivalent  with the research hypothesis that considers the condition is due to a given CDT that is present in insufficient amounts.
-We use $P_{abs}$ and $P_z$ to predict upstream CDTs that would revert the measured changes. 
-%This hypothesis is also relevant when investigating whether the given phenotype has been impacted by the lack of a given chemical that is necessary for the well-functioning of the organism or cell (e.g. a vitamin deficiency, iron deficiency, etc.). Here, the research hypothesis states that the upstream CDT are insufficient in the condition studied. 
-For each upstream CDT $u$, the number of consistent DE genes downstream of $u$, $DTI(u)$, is compared to the number of measured target genes expected to be both consistent and DE just by chance. The uncorrected p-value $P_{abs}$ is computed using the hypergeometric distribution~\cite{DraghiciOT:2003, DraghiciBook:2011}. The analysis combines $P_{abs}$ and $P_z$, using  Fisher's method~\cite{fisher1925statistical}. %where $P_z$ is considered only for significant negative z-scores ($z \leqslant -2$).
-
-
-
-\textbf{Clinical Validation.} 
-We evaluated the MP protocol with a single pretest, single post-test quasi-experiment from March 12-March 27, 2020 at a 5 hospital health system in Michigan. Patients were compared before and after implementation of the MP protocol on March 20th. The clinical characteristics of the patients are shown in Table~\ref{Supp:clinicalcharacteristics}. 
-The primary endpoint was 30 day all-cause mortality.  
-
-\textbf{The methylprednisolone protocol.}  
-Patients with PCR confirmed COVID-19 who required 4 liters or more of oxygen per minute on admission, or who had escalating oxygen requirements from baseline, were recommended to receive IV methylprednisolone 0.5 to 1 mg/kg/day in 2 divided doses for 3 days. Patients who required ICU admission were eligible to extend the IV methylprednisolone course to a maximum of 7 days at the discretion of the medical team. Institutional guidelines also recommended hydroxychloroquine 400 mg twice daily for 2 doses on day 1, followed by 200 mg twice daily on days 2--5.
-
-\textbf{Statistical Analysis of clinical data.} Continuous variables were reported as median and interquartile range (IQR) and compared using the Mann-Whitney test or t-test, as appropriate. Categorical data was reported as number and percentage (no., \%) and compared using the chi-squared test or Fisher's exact test, as appropriate. No imputation was made for missing data points. The sample included all eligible consecutive hospitalized patients during the study period. A non-equivalent dependent variable of antibiotic prescribing was utilized to account for potential maturation in treatment. Survival analysis was performed using the Kaplan-Meier method and log-rank test. 
-
 
 \subsection{Data sources}
 This results presented here used data from the Advaita Knowledge Base v 1910, gene ontology data from the GO DB released on April 26, 2019, pathway data from KEGG release 90.0+/05-29, May 2019, miRNA data from MicroCosm Targets version 5, TargetScan version 7.2 (human), miRBase release 22.1, October 2019, interactions from STRING version 11.0 Jan 19, 2019, chemicals, drugs and toxicants from CTD released June 2019, and network data from BioGRID version 3.5.171, March 25th 2019. 
@@ -637,7 +655,9 @@ Although the group treated with MP had a lower death rate, it also started with 
 \subsection{Henry Ford Hospital Division of Infectious Diseases Management and Treatment of COVID-19 Cases Guideline}
 
 
-All confirmed COVID-19 inpatients require Infectious Diseases consultation for management. For testing recommendations, please refer to SARS-CoV-2 (COVID-19) Testing Criteria from HFHS infection prevention and control. \url{https://onehenry.hfhs.org/documentcenter/Business%20Units%20%20Departments/SARS-CoV-2%20(COVID-19)%20Testing%20criteria%20v3.12.2020.pdf} 
+All confirmed COVID-19 inpatients require Infectious Diseases consultation for management. For testing recommendations, please refer to SARS-CoV-2 (COVID-19) Testing Criteria from HFHS infection prevention and control (\url{https://tinyurl.com/ypnesf6d}).
+
+%\url{https://onehenry.hfhs.org/documentcenter/Business%20Units%20%20Departments/SARS-CoV-2%20(COVID-19)%20Testing%20criteria%20v3.12.2020.pdf} 
 
 At the time this  study was performed, there were \textbf{no FDA approved therapies to treat COVID-19}. Some medications have demonstrated in vitro, animal, or very limited clinical safety and efficacy data in other coronaviruses (e.g. SARS and MERS). The Division of Infectious Diseases is coordinating research/compassionate use remdesivir. The below treatments should be started immediately once COVID test is positive (when indicated), pending remdesivir availability.  Preemptively starting COVID medications prior to return of test results is not recommended due to limited medication supply unless there is high suspicion based upon clinical judgement and patient characteristics.  These guidelines are interim recommendations and may change according to drug availability and new data published. Supportive care and infection control measures are indicated for all hospitalized patients.
 

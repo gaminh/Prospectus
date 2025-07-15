@@ -26,9 +26,15 @@ In this analysis, since our goal is to analyze gene expression measurements, we 
 
 
 
-\subsection{Two hypotheses}
+\subsection{Two working hypotheses}
 
-For each CDT in the database, we would consider two hypotheses:
+Identifying the chemical, drug, or toxicant (CDT) that perturbs the patients' gene expression level is a crucial step to pinpoint the cause and therefore help finding a suitable treatment for the patients. Two primary mechanisms through which CDTs impact human health have been identified.
+
+Some diseases are caused by exposing to harmful or toxic environment, such as wild fire smoke or polluted water sources. These toxicants can be either a product of human activities or from natural disasters. In these cases, the presence of a chemical substance  is responsible for the changes in  the gene expression profiles and  therefore, for creating the phenotypes. 
+
+In other situations,  a phenotype and its associated  gene expression changes  can be caused by the lack of a necessary chemical  that plays an important metabolic role, e.g. iodine deficiency. 
+
+For each CDT in the database, we formally consider two hypotheses that represent these two scenario that this CDT can be harmful to subject's health:
 
 \begin{itemize}
 \item Hypothesis 1 (H1): the level of the CDT is higher in the phenotype compared to the control.%; and hence, enhances expressions of the downstream genes via the direct interaction edges.

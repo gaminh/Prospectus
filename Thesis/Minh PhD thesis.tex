@@ -43,7 +43,7 @@
 \usepackage[section]{placeins}
 
 % Hypertext (links) in LaTeX. [option] = remove color and border on links.
-\usepackage[hidelinks]{hyperref}
+
 
 %\usepackage[all]{xy}
 %\usepackage{mathtools}
@@ -73,6 +73,7 @@
 
 % Create normal/logarithmic plots in two and three dimensions
 \usepackage{pgfplots}
+\usepackage[hidelinks]{hyperref}
 % Request a specific version
 \pgfplotsset{compat=1.5}
 
@@ -221,7 +222,7 @@
 %% Compile acknowledgements page
 %\phantomsection
 \input{acknowledgements}
-%\newpage
+\newpage
 
 % Enter single spacing environment for toc, lot, and lof (see below)
 \begin{singlespace}
@@ -340,8 +341,8 @@
 \bibliographystyle{abbrv}
 \addcontentsline{toc}{section}{References}
 %\bibliography{/Users/minhnguyen/master/master} 
-%\bibliography{/Users/minhnguyen/master_v2/master}    %Minh
-\bibliography{/Users/Sorin/Documents/bibliography/master}
+\bibliography{/Users/minhnguyen/master_v2/master}    %Minh
+%\bibliography{/Users/Sorin/Documents/bibliography/master}
 \clearpage
 
 % Compile abstract

@@ -4,6 +4,14 @@ With description of the characteristics of existing pathway analysis review pape
 
 Here we introduce two completely objective, reproducible, and scientifically sound approaches to benchmark pathway analysis methods. In the first sub-section, we evaluate the methods based on their ability to identify the involved phenotypes using real human and mouse benchmark data sets. The second sub-section assesses their performances under the true null hypothesis, i.e. there is no true phenotype involved.
 
+
+This thesis provides precise, objective, and reproducible answers to the following important and currently unanswered questions: (i) is there any difference in performance between non-TB and TB methods?, (ii) is there a method that is consistently better than the others in terms of its ability to identify target pathways, accuracy, sensitivity, specificity, and the Area Under the receiver operating characteristic Curve (AUC)?, (iii) are there any specific pathways that are biased (in the sense of being more likely or less likely to be significant across all methods)?, and (iv) do specific methods have a bias toward specific pathways (e.g. is pathway X likely to be always reported as significant by method Y)?. 
+This article provides a guidance to help researchers select the right method to deploy in analyzing their data based on any kind of scientific criteria. 
+At the same time, this article will be of interest to any computational biologists or bioinformaticians involved in developing new analysis methods. 
+For such researchers, this article is expected to become the benchmark against which any future analysis method will have to be compared. 
+Finally, because of the bias analysis of all known KEGG pathways included here, this article is also expected to be extremely useful to many people involved in the curation and creation of pathway databases.
+
+
 \subsection{Systematic assessment of the methods using benchmark data sets}
 
 %While some of the review papers discuss the theory aspects of the benchmarking methods or use simulated data sets, very few papers compare the methods using small set of benchmarking data sets with limited number of conditions. 
@@ -39,7 +47,8 @@ We included 13 methods in this benchmarking study. Eight of these are non-TB met
 \end{table}
 
 
-\subsubsection{Ability to identify the target pathways on human data sets}
+%\subsubsection{Ability to identify the target pathways on human data sets}
+\subsubsection{Validation using target pathways}
 
 One of the most straightforward ways of validating a pathway analysis method is assessing its ability to identify the target pathway describing the related mechanism of the condition studied. 
 This validation approach works as follows. First, data sets related to  conditions that already have an associated KEGG pathway (i.e. target pathway) are collected. For each experiment, a perfect method would be able to identify the target pathway as significantly impacted and rank it on top. The target pathway is chosen in advance without human interpretation. Hence, this validation is completely objective and scientifically sound. We apply each method on each of those data sets and report the ranks and p values of target pathways (Fig \ref{workflow}).
@@ -196,7 +205,8 @@ Similarly, the median p value obtained by using TB methods are also significantl
 
 %Among the widely used methods described in the previous section, we would choose eleven methods in each groups to perform on real 75 data sets to prepare their individual performances. 
 
-\subsubsection{Ability to identify the pathways containing the cause of the phenotype on mouse data sets}
+%\subsubsection{Ability to identify the pathways containing the cause of the phenotype on mouse data sets}
+\subsubsection{Validation using knock-out data sets}
 \label{KOsubsubsection}
 
 Although the above assessment is better than the human interpretation approach or using simulated data sets, it still has some limitations: it focuses solely on one true positive, the target pathway. We do not know what other pathways are also truly impacted and therefore cannot evaluate other criteria such as the accuracy, specificity, sensitivity, and the area under a Receiver Operating Characteristic (ROC) curve (AUC) of a method. Here, we use knock-out data sets that involve using knock-out experiments (KO), where the source of the perturbation is known, i.e. the KO gene.
@@ -630,7 +640,8 @@ hsa04623	&Cytosolic DNA-sensing pathway&	7&	5&	12\\
 \end{center}
 
 
-\subsubsection{Recommendations for pathway analysis users}
+\textbf{Recommendations for pathway analysis users}
+
 Based on the extensive testing and comparisons described here, we can provide some guidance for researchers who need to perform a pathway analysis. First and foremost, one should decide what type of analysis they are interested in. Topology-based (TB) methods  provide a better ability to identify pathways that contain genes that caused the phenotype or are closely related to it (such as KO genes, or genes bearing variants that significantly affect their function, etc.). A topology-based analysis is also recommended when (i) it is important to consider how various genes interact, (ii) one wishes to take advantage of the sizes and directions of measured expression changes, (iii) one wishes to account for the type and direction of interactions on a pathway, (iv) one intends to predict or explain downstream or pathway-level effects, and (v) one is interested in understanding the underlying mechanisms. The topology-based approach that  provided the best AUC across our 11 KO data set was the impact analysis, as implemented in ROntoTools~\cite{ROntoTools1.2.0}. The same impact analysis approach is also used in  iPathwayGuide~\cite{ahsan2017identifying,Pathway-GuideSoftware}.
 
 A non-TB method may be more useful when one needs to analyze arbitrarily defined sets of genes, rather than pathways. In this category, GSEA provided the highest AUC in our extensive testing. GSEA was also the most un-biased method out of the 13 approaches benchmarked in our studies. 
