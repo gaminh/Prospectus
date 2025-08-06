@@ -9,7 +9,7 @@
 
 %In this article, we describe a novel tool for Predicting Upstream REgulators (PURE) that can perform a causal analysis and infer the cause of a set of measured gene expression changes. 
 In this chapter, we describe a novel causal analysis tool for Predicting Upstream REgulators (PURE) that can infer the cause of a set of measured gene expression changes. 
-Given a set of differentially expressed genes between samples with studied phenotype and control samples, we would analyzes more  than 5,000 CDTs and their 330,659 known associations with human genome, 187,759 associations with mouse genome, and 161,323 associations with the rat genome as described in the Comparative Toxicogenomics Database~\cite{mattingly2006comparative}. We later compare our method's performance with the existing methods and discuss the benchmarking results in details.
+Given a set of differentially expressed genes between samples with studied phenotype and control samples, we  analyzed more  than 5,000 CDTs and their 330,659 known associations with human genome, 187,759 associations with mouse genome, and 161,323 associations with the rat genome as described in the Comparative Toxicogenomics Database~\cite{mattingly2006comparative}. We later compare our method's performance with the existing methods and discuss the benchmarking results in details.
  
 % \hfill
  
@@ -374,17 +374,17 @@ We evaluate the methods' performance based on the same criteria: rank of the tar
 
 
 
-\begin{figure*}
+\begin{figure}
 \begin{center}
 %\includegraphics[width=0.49\linewidth]{Figures/RankTarget_v4.pdf}
 \includegraphics[width=0.49\linewidth]{../Figures/RankTarget_vOrg_log.pdf}
 \includegraphics[width=0.49\linewidth]{../Figures/NrSigChem_vOrg.pdf}
 %\includegraphics[width=0.32\linewidth]{Figures/pValueTarget_v2.pdf}
 
-\caption{The comparison of PURE and other 5 methods, in term of log(ranks) of true CDTs (left panel) and the number of significant chemicals reported (right panel). In the left panel, a better method would rank the true CDT as low as possible (ideally rank it 1) so lower log(rank) values are better. A CDT that is different from the true CDT and yet reported as significant is a false positive. For this reason, we would like the number of CDTs reported as significant (shown in the right panel) to also be as low as possible. }
+\caption{The comparison of PURE and other 5 methods, in term of log(ranks) of true CDTs (left panel) and the number of significant chemicals reported (right panel). In the left panel, a better method would rank the true CDT as low as possible (ideally rank it 1) so lower log(rank) values are better. The data shows that PURE has a median log-rank of XXX which is significantly better than the ranks yielded by all other methods. For the right panel, a CDT that is different from the true CDT and yet reported as significant is a false positive. For this reason, we would like the number of CDTs reported as significant (shown in the right panel) to also be as low as possible. The data shows that PURE gives the lowest number  of false positives compared to all the other methods.}
 \label{fig:resultFigure}
 \end{center}
-\end{figure*}
+\end{figure}
 
 
 %\textbf{Definition of success}
@@ -416,9 +416,7 @@ In the validation process, we tested the proposed method on 14 gene expression d
 There are several reasons that limit the accuracy of the existing tools compared to PURE. First, they do not take into consideration the direction of changes in DE genes, i.e., current methods do not take into consideration if a DE gene is up- or down-regulated. Second, they do not utilize the information about CDT-gene interactions as PURE does. Finally, Fisher's exact test may not yield reliable when the number of ``interesting'' genes (i.e. DE genes) is small, which is often the case in gene expression data sets. Instead of DE genes versus total number of  genes, PURE considers the number of interactions supporting (or not)  the testing hypothesis. Because the ratio of edges supporting H1 out of all edges is much higher than the ratio of DE genes out of all available genes in the data sets, PURE is expected produce a significantly more accurate result in more situations.
 
 \textbf{Limitations.}
-
 %\red{Notice that even though Methylprednisolone was proved in a separate clinical trial that it improved the outcome, this finding is arguably not the ground truth because its effectiveness is yet to validate by a big scale clinical study and at the moment it is not the only drug for the COVID-19 treatment. }
-
 The proposed method might be useful in many cases but only as a first -- \emph{computational} -- step to identify potential  causal CDTs (by using  H1), or drugs that could be potentially repurposed (by using H2). As any other type of computational, \textit{in silico} results, anything obtained with this approach will require further validation through laboratory experiments, clinical trials or both.
 
 The proposed approach, as well as all other methods benchmarked in this study, depend significantly on the quality of the curated chemical-gene expression association database.
