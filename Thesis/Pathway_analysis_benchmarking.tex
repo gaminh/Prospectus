@@ -1,3 +1,6 @@
+\documentclass[Minh_PhD_thesis.tex]{subfiles}
+\begin{document}
+
 \section{Benchmarking pathway analysis methods}
 
 With description of the characteristics of existing pathway analysis review papers mentioned in the previous section, we propose a comprehensive framework for benchmarking pathway analysis methods that would tackle the limitations and shortcomings of the previous review papers.
@@ -648,3 +651,6 @@ A non-TB method may be more useful when one needs to analyze arbitrarily defined
 
 The Fisher's Exact (FE) test or hypergeometric test is arguably the most widely  used method for enrichment analysis. However,  our results show that FE is not very suitable in the context of pathway analysis. Figure \ref{fig:NumberOfBias} shows that FE test performs the worst among the 13 compared pathway analysis methods:  137 out of 150 pathways are biased toward 0, that being very likely to often produce false positives. This  should be a strong cautionary note to the users of other platforms using this test, such as Ingenuity Pathway Analysis~\cite{kramer2013causal}, or DAVID~\cite{huang2008systematic}.
 One of the main reasons for the poor performance of the FE test is that it assumes that the genes are independent, while the genes on any pathway influence each other as described by the pathway. Another reason is that the FE test ignores the roles of genes situated in key positions (e.g. a single entry point in a pathway), as well as the number, direction and type of various signals through which genes on the pathway interact with each other.
+
+
+\end{document}
